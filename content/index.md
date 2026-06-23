@@ -7,5 +7,11 @@ title: "149"
 
 ## 글 목록
 
-### CS
+### 백엔드
+- [[cap-theorem|NoSQL과 CAP 이론]]
+- [[raft|Raft 합의 알고리즘 가볍게]]
+- [[optimistic-lock-fencing-token|JPA 낙관적 락과 펜싱 토큰]]
+- [[stop-the-world|Stop-The-World (STW)]]
+
+### CS 스터디 (큰돌)
 - [[06-operating-system|운영체제 핵심 정리 — IPC·동기화·스케줄링·캐시·메모리]]
