@@ -9,9 +9,10 @@ title: "149"
 
 ### 백엔드
 - [[cap-theorem|CAP 이론]]
+- [[multi-module|멀티 모듈]]
 - [[raft|Raft 합의 알고리즘]]
 - [[optimistic-lock-fencing-token|낙관적 락과 펜싱 토큰]]
 - [[stop-the-world|Stop-The-World (STW)]]
 
 ### CS 스터디 (큰돌)
-- [[06-operating-system|운영체제 핵심 정리 — IPC·동기화·스케줄링·캐시·메모리]]
+- [[06-operating-system|운영체제2]]
