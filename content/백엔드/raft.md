@@ -1,11 +1,13 @@
 ---
-title: Raft 합의 알고리즘 가볍게
+title: Raft 합의 알고리즘
 date: 2026-06-23
 tags:
   - CS
   - 분산시스템
   - 면접준비
 draft: false
+created: 2026-06-23 18:55
+modified: 2026-06-23 20:22
 ---
 
 여러 노드가 같은 값(로그)에 합의하도록 만드는 게 분산 합의(consensus)다. Raft는 그 합의 알고리즘 중 하나로, 먼저 나온 Paxos가 너무 어렵다는 문제의식에서 "이해하기 쉬운 합의"를 목표로 만들어졌다. etcd, Consul 같은 시스템이 Raft로 동작한다.

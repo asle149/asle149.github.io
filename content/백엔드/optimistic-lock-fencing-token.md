@@ -1,5 +1,5 @@
 ---
-title: JPA 낙관적 락과 펜싱 토큰
+title: 낙관적 락과 펜싱 토큰
 date: 2026-06-23
 tags:
   - CS
@@ -9,7 +9,7 @@ tags:
   - 면접준비
 draft: false
 created: 2026-06-23 17:33
-modified: 2026-06-23 18:57
+modified: 2026-06-23 20:22
 ---
 
 ## 낙관적 락

@@ -8,8 +8,8 @@ title: "149"
 ## 글 목록
 
 ### 백엔드
-- [[cap-theorem|NoSQL과 CAP 이론]]
-- [[raft|Raft 합의 알고리즘 가볍게]]
+- [[cap-theorem|CAP 이론]]
+- [[raft|Raft 합의 알고리즘]]
 - [[optimistic-lock-fencing-token|JPA 낙관적 락과 펜싱 토큰]]
 - [[stop-the-world|Stop-The-World (STW)]]
 

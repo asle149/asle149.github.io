@@ -1,5 +1,5 @@
 ---
-title: NoSQL과 CAP 이론
+title: CAP 이론
 date: 2026-06-23
 tags:
   - CS
@@ -8,7 +8,7 @@ tags:
   - 면접준비
 draft: false
 created: 2026-06-23 17:32
-modified: 2026-06-23 18:48
+modified: 2026-06-23 20:22
 ---
 
 분산 데이터베이스를 고를 때 빠지지 않고 나오는 게 CAP 이론이다. 하나의 분산 시스템은 일관성(Consistency)·가용성(Availability)·분할 내성(Partition tolerance) 세 가지를 동시에 모두 만족할 수 없고, 최대 둘까지만 보장할 수 있다는 이론이다.
