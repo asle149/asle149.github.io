@@ -10,7 +10,7 @@ title: "149"
 ### 백엔드
 - [[cap-theorem|CAP 이론]]
 - [[raft|Raft 합의 알고리즘]]
-- [[optimistic-lock-fencing-token|JPA 낙관적 락과 펜싱 토큰]]
+- [[optimistic-lock-fencing-token|낙관적 락과 펜싱 토큰]]
 - [[stop-the-world|Stop-The-World (STW)]]
 
 ### CS 스터디 (큰돌)
