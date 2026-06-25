@@ -1,3 +1,45 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+/* ===== libdoc 느낌 커스텀 ===== */
+
+/* 좌측 카테고리 사이드바 */
+.left.sidebar {
+  border-right: 1px solid var(--lightgray);
+}
+
+/* 탐색기(카테고리 트리) */
+.explorer {
+  font-size: 0.9rem;
+}
+.explorer .nav-folder-title {
+  font-weight: 700;
+  color: var(--dark);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+}
+.explorer .nav-folder-title:hover { background: var(--lightgray); }
+.explorer .nav-file-title {
+  color: var(--darkgray);
+  border-radius: 6px;
+  padding: 0.18rem 0.4rem;
+}
+.explorer .nav-file-title:hover { background: var(--highlight); color: var(--secondary); }
+
+/* 본문 가독성 + 헤더 라인 */
+.center article { line-height: 1.7; }
+.center article h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--lightgray);
+}
+.center article h3 { margin-top: 1.5rem; }
+
+/* 내부 링크: 배경 강조 빼고 담백하게 */
+.center a.internal {
+  color: var(--secondary);
+  background: none;
+  font-weight: 500;
+}
+
+/* 목록 간격 */
+.center article ul li { margin: 0.3rem 0; }
