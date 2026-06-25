@@ -17,17 +17,17 @@ configuration:
     typography:
       header: IBM Plex Sans KR
       body: IBM Plex Sans KR
-      code: IBM Plex Mono
+      code: Overpass Mono
     colors:
       lightMode:
-        light: "#fcfcfd"
-        lightgray: "#e8eaed"
-        gray: "#9aa0a6"
-        darkgray: "#3c4043"
-        dark: "#1a1c1e"
-        secondary: "#2f6db0"
-        tertiary: "#5b9bd5"
-        highlight: rgba(47, 109, 176, 0.08)
+        light: "#ffffff"
+        lightgray: "#e6e8ec"
+        gray: "#647688"
+        darkgray: "#323b44"
+        dark: "#222a31"
+        secondary: "#036dde"
+        tertiary: "#3a8ae8"
+        highlight: rgba(3, 109, 222, 0.07)
         textHighlight: "#fde68a99"
       darkMode:
         light: "#1a1b1e"
