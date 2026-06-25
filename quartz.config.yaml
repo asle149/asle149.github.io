@@ -25,9 +25,9 @@ configuration:
         gray: "#647688"
         darkgray: "#323b44"
         dark: "#222a31"
-        secondary: "#036dde"
-        tertiary: "#3a8ae8"
-        highlight: rgba(3, 109, 222, 0.07)
+        secondary: "#1f6e3a"
+        tertiary: "#2e8b57"
+        highlight: rgba(31, 110, 58, 0.08)
         textHighlight: "#fde68a99"
       darkMode:
         light: "#1a1b1e"
@@ -35,9 +35,9 @@ configuration:
         gray: "#6b7280"
         darkgray: "#c8cbd0"
         dark: "#eceef1"
-        secondary: "#7fb0e0"
-        tertiary: "#5a86b3"
-        highlight: rgba(127, 176, 224, 0.10)
+        secondary: "#6dc48a"
+        tertiary: "#8fd9a8"
+        highlight: rgba(109, 196, 138, 0.12)
         textHighlight: "#b3aa0288"
 plugins:
   - source: github:quartz-community/created-modified-date
@@ -187,7 +187,7 @@ plugins:
       position: beforeBody
       priority: 30
   - source: github:quartz-community/page-title
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 10

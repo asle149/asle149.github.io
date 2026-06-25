@@ -1,6 +1,40 @@
 @use "./variables.scss" as *;
 
-/* ===== libdoc 느낌 ===== */
+/* ===== 상단 네비바 (포인트 컬러 = 진한 초록 #163319) ===== */
+.top-nav {
+  width: 100%;
+  background: #163319;
+  border-bottom: 1px solid #0d2110;
+}
+.top-nav-inner {
+  max-width: 1500px;            /* = .page 폭 (desktop 1200 + 300) 에 맞춤 */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+.top-nav-brand {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  background: none;
+}
+.top-nav-brand:hover { color: #bfe3c8; }
+.top-nav-links { display: flex; gap: 1.5rem; }
+.top-nav-links a {
+  color: #cdddd2;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  background: none;
+  transition: color .12s;
+}
+.top-nav-links a:hover { color: #ffffff; }
+
+/* ===== libdoc 느낌 사이드바 ===== */
 .left.sidebar { background-color: #f4f5f7; border-right: 1px solid #e2e5ea; padding-top: 1.4rem; }
 :root[saved-theme="dark"] .left.sidebar { background-color: #1b1d22; border-right-color: #2a2d34; }
 .page-title a { font-weight: 800; letter-spacing: -0.01em; }
@@ -11,9 +45,9 @@
 .search > .search-button:hover { border-color: var(--secondary); }
 :root[saved-theme="dark"] .search > .search-button { background: #15171b; border-color: #2a2d34; }
 .explorer .nav-folder-title { font-weight: 700; color: var(--dark); padding: 0.3rem 0.45rem; border-radius: 6px; }
-.explorer .nav-folder-title:hover { background: rgba(3,109,222,0.08); }
+.explorer .nav-folder-title:hover { background: var(--highlight); }
 .explorer .nav-file-title { color: var(--gray); padding: 0.25rem 0.45rem 0.25rem 1rem; border-radius: 6px; }
-.explorer .nav-file-title:hover { background: rgba(3,109,222,0.08); color: var(--secondary); }
+.explorer .nav-file-title:hover { background: var(--highlight); color: var(--secondary); }
 
 /* ===== 제목·프론트매터·본문 같은 폭/정렬 ===== */
 .center { padding-left: 2rem; padding-right: 2rem; }
@@ -25,19 +59,32 @@
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
 
-/* ===== 대문 카드(oliveyoung 느낌) ===== */
-body[data-slug="index"] article ul { list-style: none; padding-left: 0; display: grid; gap: 1rem; margin-top: 1rem; }
-@media (min-width: 760px) { body[data-slug="index"] article ul { grid-template-columns: 1fr 1fr; } }
+/* ===== 대문 카드: 1열 풀폭 + 카드 전체 클릭 ===== */
+body[data-slug="index"] article ul {
+  list-style: none; padding-left: 0;
+  display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.2rem;
+}
 body[data-slug="index"] article ul li {
+  position: relative;            /* stretched-link 기준 */
   margin: 0; background: #f6f7f9; border: 1px solid #ebedf0; border-radius: 14px;
-  padding: 1.25rem 1.4rem; line-height: 1.55; transition: box-shadow .15s, transform .15s;
+  padding: 1.4rem 1.6rem; line-height: 1.6;
+  transition: box-shadow .15s, transform .15s, border-color .15s;
 }
 :root[saved-theme="dark"] body[data-slug="index"] article ul li { background: #17191e; border-color: #2a2d34; }
-body[data-slug="index"] article ul li:hover { box-shadow: 0 8px 22px rgba(0,0,0,.08); transform: translateY(-2px); }
-body[data-slug="index"] article ul li code { background: none; padding: 0; color: var(--gray); font-weight: 700; font-size: 0.8rem; }
-body[data-slug="index"] article ul li a { display: block; margin: 0.4rem 0; font-size: 1.25rem; font-weight: 800; color: var(--dark); }
-body[data-slug="index"] article ul li a:hover { color: var(--secondary); }
-
-/* 카드 제목 진한색 (링크색 override) */
-body[data-slug="index"] article ul li a.internal { color: var(--dark); }
-body[data-slug="index"] article ul li a.internal:hover { color: var(--secondary); }
+body[data-slug="index"] article ul li:hover {
+  box-shadow: 0 10px 26px rgba(22,51,25,.12); transform: translateY(-2px); border-color: #cfe0d4;
+}
+:root[saved-theme="dark"] body[data-slug="index"] article ul li:hover { border-color: #34503a; }
+/* 카테고리·날짜 (맨 윗줄) */
+body[data-slug="index"] article ul li code {
+  background: none; padding: 0; color: var(--secondary); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+}
+/* 제목 */
+body[data-slug="index"] article ul li a.internal {
+  display: inline-block; margin: 0.45rem 0 0.35rem; font-size: 1.3rem; font-weight: 800; color: var(--dark);
+}
+/* 카드 전체를 클릭 가능하게: 제목 링크를 카드 전체로 확장 */
+body[data-slug="index"] article ul li a.internal::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+}
+body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }

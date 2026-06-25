@@ -347,6 +347,18 @@ export function renderPage(
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
       <body data-slug={slug} data-basepath={basePath}>
+        <header class="top-nav">
+          <div class="top-nav-inner">
+            <a class="top-nav-brand" href={`${basePath}/`}>
+              김민솔
+            </a>
+            <nav class="top-nav-links">
+              <a href={`${basePath}/categories`}>카테고리</a>
+              <a href={`${basePath}/archive`}>아카이브</a>
+              <a href={`${basePath}/about`}>About</a>
+            </nav>
+          </div>
+        </header>
         {frame.css && <style dangerouslySetInnerHTML={{ __html: frame.css }} />}
         <div id="quartz-root" class="page" data-frame={frame.name}>
           <Body {...componentData}>
