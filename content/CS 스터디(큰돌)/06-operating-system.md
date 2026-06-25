@@ -6,7 +6,7 @@ tags:
   - 운영체제
   - 면접준비
 draft: false
-category: 운영체제
+category: CS 스터디(큰돌)
 created: 2026-06-23 12:27
 modified: 2026-06-23 23:18
 ---

@@ -11,4 +11,4 @@ title: 김민솔
 - `JVM` · 2026-06-23<br>**[[stop-the-world|Stop-The-World (STW)]]**<br>GC가 모든 스레드를 멈추는 이유와 safepoint·TTSP, 그리고 멈춤 시간을 줄이는 법.
 - `동시성` · 2026-06-23<br>**[[optimistic-lock-fencing-token|낙관적 락과 펜싱 토큰]]**<br>@Version이 곧 펜싱 토큰 — 뒤늦게 도착한 옛 요청을 막는 같은 방어 원리.
 - `분산시스템` · 2026-06-23<br>**[[raft|Raft 합의 알고리즘]]**<br>리더 선출 + 로그 복제 + 과반수 합의를, 복잡한 Paxos보다 이해하기 쉽게.
-- `운영체제` · 2026-06-23<br>**[[06-operating-system|운영체제2]]**<br>IPC·동기화·교착·CPU 스케줄링·캐시·메모리 할당을 한 번에 훑기.
+- `CS 스터디(큰돌)` · 2026-06-23<br>**[[06-operating-system|운영체제2]]**<br>IPC·동기화·교착·CPU 스케줄링·캐시·메모리 할당을 한 번에 훑기.

@@ -148,6 +148,7 @@ plugins:
       folderDefaultState: open
       folderClickBehavior: link
       useSavedState: true
+      filterFn: "(node) => node.slugSegment !== 'tags' && !['categories','archive','about'].includes(node.slugSegment)"
     layout:
       position: left
       priority: 50
