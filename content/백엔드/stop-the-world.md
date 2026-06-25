@@ -7,6 +7,7 @@ tags:
   - GC
   - 면접준비
 draft: false
+category: JVM
 created: 2026-06-23 19:00
 modified: 2026-06-23 20:14
 ---

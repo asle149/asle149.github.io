@@ -7,6 +7,7 @@ tags:
   - 아키텍처
   - 면접준비
 draft: false
+category: 아키텍처
 created: 2026-06-23 18:56
 modified: 2026-06-23 18:57
 ---

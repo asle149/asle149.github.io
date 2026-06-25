@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "149"
+  pageTitle: "김민솔"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true

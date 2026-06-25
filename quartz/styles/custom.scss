@@ -1,62 +1,41 @@
 @use "./variables.scss" as *;
 
 /* ===== libdoc 느낌 ===== */
-
-/* 좌측 사이드바: libdoc 연회색 패널 */
-.left.sidebar {
-  background-color: #f4f5f7;
-  border-right: 1px solid #e2e5ea;
-  padding-top: 1.4rem;
-}
-:root[saved-theme="dark"] .left.sidebar {
-  background-color: #1b1d22;
-  border-right-color: #2a2d34;
-}
-
-/* 사이트 제목 */
+.left.sidebar { background-color: #f4f5f7; border-right: 1px solid #e2e5ea; padding-top: 1.4rem; }
+:root[saved-theme="dark"] .left.sidebar { background-color: #1b1d22; border-right-color: #2a2d34; }
 .page-title a { font-weight: 800; letter-spacing: -0.01em; }
 
-/* 검색: libdoc식 입력박스 */
 .search > .search-button {
-  width: 100%;
-  justify-content: flex-start;
-  gap: 0.4rem;
-  background: #ffffff;
-  border: 1px solid #d8dce3;
-  border-radius: 8px;
-  padding: 0.5rem 0.7rem;
-  color: #647688;
+  width: 100%; justify-content: flex-start; gap: 0.4rem;
+  background: #fff; border: 1px solid #d8dce3; border-radius: 8px; padding: 0.5rem 0.7rem; color: #647688;
 }
 .search > .search-button:hover { border-color: var(--secondary); }
 :root[saved-theme="dark"] .search > .search-button { background: #15171b; border-color: #2a2d34; }
 
-/* 탐색기(카테고리 메뉴) */
-.explorer .nav-folder-title {
-  font-weight: 700;
-  color: var(--dark);
-  padding: 0.3rem 0.45rem;
-  border-radius: 6px;
-}
+.explorer .nav-folder-title { font-weight: 700; color: var(--dark); padding: 0.3rem 0.45rem; border-radius: 6px; }
 .explorer .nav-folder-title:hover { background: rgba(3,109,222,0.08); }
-.explorer .nav-file-title {
-  color: var(--gray);
-  padding: 0.25rem 0.45rem 0.25rem 1rem;
-  border-radius: 6px;
-}
+.explorer .nav-file-title { color: var(--gray); padding: 0.25rem 0.45rem 0.25rem 1rem; border-radius: 6px; }
 .explorer .nav-file-title:hover { background: rgba(3,109,222,0.08); color: var(--secondary); }
 
-/* 본문 */
-.center article { line-height: 1.7; }
+/* ===== 본문 폭 좁히기(양옆 여백) ===== */
+.center { padding-left: 2rem; padding-right: 2rem; }
+.center article { max-width: 740px; margin-inline: auto; line-height: 1.7; }
 .center article h1, .center article h2, .center article h3 { font-weight: 800; }
-.center article h2 {
-  margin-top: 2.2rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 2px solid #eef0f3;
-}
+.center article h2 { margin-top: 2.2rem; padding-bottom: 0.35rem; border-bottom: 2px solid #eef0f3; }
 :root[saved-theme="dark"] .center article h2 { border-bottom-color: #2a2d34; }
-
-/* 링크: libdoc 블루 */
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
-
-/* 푸터 GitHub 링크 강조 */
 .page-footer a { color: var(--secondary); }
+
+/* ===== 대문 카드(oliveyoung 느낌) ===== */
+.post-cards { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin: 1.3rem 0; }
+@media (min-width: 800px) { .post-cards { grid-template-columns: 1fr 1fr; } }
+.post-card {
+  display: block; padding: 1.1rem 1.2rem; border: 1px solid var(--lightgray);
+  border-radius: 12px; background: var(--light); text-decoration: none;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.post-card:hover { border-color: var(--secondary); box-shadow: 0 6px 18px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.pc-meta { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gray); margin-bottom: 0.4rem; }
+.pc-cat { color: var(--secondary); font-weight: 700; }
+.pc-title { font-weight: 800; font-size: 1.12rem; color: var(--dark); margin-bottom: 0.3rem; }
+.pc-desc { font-size: 0.9rem; color: var(--darkgray); line-height: 1.5; }

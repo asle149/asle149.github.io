@@ -7,6 +7,7 @@ tags:
   - NoSQL
   - 면접준비
 draft: false
+category: 분산시스템
 created: 2026-06-23 17:32
 modified: 2026-06-23 20:22
 ---
