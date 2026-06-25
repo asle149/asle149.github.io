@@ -88,3 +88,9 @@ body[data-slug="index"] article ul li a.internal::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
 }
 body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }
+
+/* ===== 글이 아닌 페이지(대문·카테고리·아카이브·About)엔 날짜 숨김 ===== */
+body[data-slug="index"] .content-meta,
+body[data-slug="categories"] .content-meta,
+body[data-slug="archive"] .content-meta,
+body[data-slug="about"] .content-meta { display: none; }
