@@ -9,7 +9,7 @@ draft: false
 category: CS 스터디(큰돌)
 slug: 08-database
 created: 2026-06-29 12:00
-modified: 2026-06-29 21:11
+modified: 2026-06-29 21:20
 ---
 
 ## 1. 조인
