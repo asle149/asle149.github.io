@@ -17,5 +17,6 @@ title: 카테고리
 ## 아키텍처 (1)
 - [[multi-module|멀티 모듈]]
 
-## CS 스터디(큰돌) (1)
+## CS 스터디(큰돌) (2)
+- [[08-database|데이터베이스1]]
 - [[06-operating-system|운영체제2]]
