@@ -79,10 +79,12 @@ body[data-slug="index"] article ul li:hover {
 body[data-slug="index"] article ul li code {
   background: none; padding: 0; color: var(--secondary); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
 }
-/* 제목 */
+/* 제목 (볼드 빼고 한/영 굵기 통일 — font-weight 400) */
 body[data-slug="index"] article ul li a.internal {
-  display: inline-block; margin: 0.45rem 0 0.35rem; font-size: 1.3rem; font-weight: 800; color: var(--dark);
+  display: inline-block; margin: 0.45rem 0 0.35rem; font-size: 1.3rem; font-weight: 400; color: var(--dark);
 }
+/* 마크다운 **굵게**(strong)도 카드 제목에선 굵기 상속 → 볼드 해제 */
+body[data-slug="index"] article ul li strong { font-weight: inherit; }
 /* 카드 전체를 클릭 가능하게: 제목 링크를 카드 전체로 확장 */
 body[data-slug="index"] article ul li a.internal::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
