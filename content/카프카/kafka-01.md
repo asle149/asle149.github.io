@@ -1,11 +1,12 @@
 ---
 created: 2026-07-01 11:10
-modified: 2026-07-01 12:19
-title: 아파치 카프카의 역사와 미래
+modified: 2026-07-02 20:28
+title: 01. 아파치 카프카의 역사와 미래
 date: 2026-07-01
 draft: false
 tags:
   - 카프카
+  - CS
 category: 카프카
 slug: kafka-01
 description: 데이터 파이프라인이 스파게티가 된 문제에서 태어난 분산 이벤트 스트리밍 플랫폼.
