@@ -8,6 +8,7 @@
 - 설정·플러그인·레이아웃 전부 **`quartz.config.yaml` 한 파일** (색 `theme.colors`, 플러그인 on/off + position).
 - 커뮤니티 플러그인은 `github:quartz-community/*`로 받아 `.quartz/plugins/`(gitignore)에 빌드됨.
 - CI(`.github/workflows/deploy.yml`): `npm ci → npx quartz plugin install → npx quartz build`. 연속 push 시 run이 순차 대기열(concurrency: pages)로 처리되고 중간 run은 cancelled로 건너뜀(정상 — 마지막 run이 전체를 빌드). 확인: `gh run list -R asle149/asle149.github.io`.
+- 커밋에 ❌(failure)가 떠도 대부분 **빌드가 아니라 Pages deploy 단계의 깃헙 쪽 일시 오류**("Deployment failed, try again later") — 빌드는 매번 전체 사이트를 만들므로 **그 뒤 run 하나만 success면 내용 손실 없음**. 2026-07-03부터 deploy 실패 시 **30초 후 1회 자동 재시도**가 워크플로우에 들어가 있어 대부분 자가 복구됨. 계속 실패하면 `gh run rerun <id> --failed`.
 - **폴더 = 카테고리**: `content/` 아래 `분산시스템/ 아키텍처/ JVM/ 동시성/ 알고리즘/ 카프카/ CS 스터디(큰돌)/` (각 폴더 `index.md`에 title). 위키링크는 `markdownLinkResolution: shortest`라 폴더를 옮겨도 안 깨짐.
 - `content/index.md`(대문 최신 글)·`archive.md`·`categories.md`는 **수동 목록이지만 Quartz Publish 플러그인이 발행 시 자동 갱신**(날짜 내림차순 삽입, slug 중복 제거, 카테고리 카운트 재계산). 수동 편집 시 기존 형식 유지할 것.
 
