@@ -1,9 +1,10 @@
 ---
 created: 2026-07-03 14:07
-modified: 2026-07-03 14:37
+modified: 2026-07-03 14:45
 title: 03. 아파치 카프카 클러스터를 운영하는 방법
 tags:
   - CS
+  - 카프카
 category: ""
 slug: kafka-03
 date: 2026-07-03
