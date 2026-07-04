@@ -5,8 +5,8 @@ tags:
   - 수수깡
   - 동시성
   - 사이드프로젝트
-draft: true
-publish: false
+draft: false
+publish: true
 modified: 2026-07-05 00:11
 date: 2026-07-04
 ---
