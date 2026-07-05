@@ -1,9 +1,23 @@
 @use "./variables.scss" as *;
 
-/* ===== 폰트: Pretendard Variable (Head.tsx에서 로드) — 한글 볼드가 단정함 ===== */
+/* ============================================================
+   디자인 원칙 (2026-07-05 3차):
+   - 초록 = 포인트 컬러 한 색만 (--secondary). 헤더의 "점점 연해지는" 그라데이션만 예외.
+   - 나머지 장식(칩·배지·구분선·표)은 전부 회색 중립톤.
+   - 폰트 = Pretendard Variable (Head.tsx에서 로드)
+   ============================================================ */
+
 :root {
   --bodyFont: "Pretendard Variable", Pretendard, "IBM Plex Sans KR", -apple-system, "Noto Sans KR", sans-serif;
   --headerFont: "Pretendard Variable", Pretendard, "IBM Plex Sans KR", -apple-system, "Noto Sans KR", sans-serif;
+  --chip-bg: rgba(100, 118, 136, 0.09);       /* 회색 칩 배경 */
+  --chip-fg: #5b6b7b;                          /* 회색 칩 글자 */
+  --hairline: #ecedf0;                         /* 아주 옅은 구분선 */
+}
+:root[saved-theme="dark"] {
+  --chip-bg: rgba(200, 203, 208, 0.1);
+  --chip-fg: #9aa3ad;
+  --hairline: #26282e;
 }
 
 /* ===== 상단 네비바 (포인트 컬러 = 진한 초록 #163319) ===== */
@@ -56,53 +70,33 @@
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
 
-/* ===== 본문 타이포그래피 — 색은 "헤더에만" (왼쪽 바 + 점점 연해지는 초록 밴드) ===== */
+/* ===== 본문 타이포그래피 — 헤더는 블루토파즈식: 장식 없이 "글자색"이
+   h1 제일 진한 초록 → h2 → h3 순으로 한 단계씩 연해진다 ===== */
+:root {
+  --h1-green: #163319;
+  --h2-green: #1f6e3a;
+  --h3-green: #2e8b57;
+}
+:root[saved-theme="dark"] {
+  --h1-green: #a8e2bc;   /* 다크에선 밝을수록 강조 */
+  --h2-green: #8ad4a3;
+  --h3-green: #6dc48a;
+}
 .center article { line-height: 1.75; }
-.center article h1, .center article h2, .center article h3 { font-weight: 800; }
-
-/* 헤더 공통: 왼쪽 초록 바 + 오른쪽으로 갈수록 옅어지는 배경. 레벨이 내려갈수록 농도도 연해짐 */
-.center article h1 {
-  font-size: 1.5rem;
-  margin-top: 2.8rem;
-  padding: 0.45rem 0.9rem;
-  border-left: 5px solid var(--secondary);
-  background: linear-gradient(90deg, rgba(31, 110, 58, 0.16), rgba(31, 110, 58, 0) 88%);
-  border-radius: 0 8px 8px 0;
-}
-.center article h2 {
-  margin-top: 2.4rem;
-  padding: 0.4rem 0.85rem;
-  border-left: 4px solid var(--secondary);
-  background: linear-gradient(90deg, rgba(31, 110, 58, 0.1), rgba(31, 110, 58, 0) 80%);
-  border-radius: 0 8px 8px 0;
-}
-.center article h3 {
-  margin-top: 2rem;
-  padding: 0.3rem 0.75rem;
-  border-left: 3px solid rgba(31, 110, 58, 0.55);
-  background: linear-gradient(90deg, rgba(31, 110, 58, 0.05), rgba(31, 110, 58, 0) 70%);
-  border-radius: 0 6px 6px 0;
-}
-:root[saved-theme="dark"] .center article h1 {
-  background: linear-gradient(90deg, rgba(109, 196, 138, 0.2), rgba(109, 196, 138, 0) 88%);
-}
-:root[saved-theme="dark"] .center article h2 {
-  background: linear-gradient(90deg, rgba(109, 196, 138, 0.13), rgba(109, 196, 138, 0) 80%);
-}
-:root[saved-theme="dark"] .center article h3 {
-  border-left-color: rgba(109, 196, 138, 0.55);
-  background: linear-gradient(90deg, rgba(109, 196, 138, 0.07), rgba(109, 196, 138, 0) 70%);
-}
+.center article h1, .center article h2, .center article h3 { font-weight: 800; letter-spacing: -0.015em; }
+.article-title { color: var(--h1-green); }
+.center article h1 { font-size: 1.5rem; margin-top: 2.8rem; color: var(--h1-green); }
+.center article h2 { margin-top: 2.4rem; color: var(--h2-green); }
+.center article h3 { margin-top: 2rem; color: var(--h3-green); }
 .center article h4, .center article h5, .center article h6 { color: var(--darkgray); }
 
-/* 본문 요소는 중립 톤 (볼드·코드·인용·표에 색 안 씀) */
+/* 본문 요소는 중립 톤 */
 .center article :not(pre) > code {
-  background: rgba(100, 118, 136, 0.1);
+  background: var(--chip-bg);
   padding: 0.12em 0.45em;
   border-radius: 6px;
   font-size: 0.83em;
 }
-:root[saved-theme="dark"] .center article :not(pre) > code { background: rgba(200, 203, 208, 0.12); }
 .center article blockquote:not(.callout) {
   border-left: 4px solid var(--lightgray);
   background: rgba(100, 118, 136, 0.05);
@@ -128,111 +122,136 @@
 .center article hr { border: none; height: 1px; margin: 2.4rem auto; background: var(--lightgray); }
 .center article img { border-radius: 10px; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07); }
 
-/* ===== 대문 카드: 올리브영테크식 가로형 (좌 썸네일 + 우 텍스트, 카드 전체 클릭) ===== */
+/* ===== 대문: 미니멀 리스트 (텍스트 좌 · 소형 썸네일 우 · hairline 구분) ===== */
 body[data-slug="index"] article ul {
-  list-style: none; padding-left: 0;
-  display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 1.2rem;
+  list-style: none; padding: 0; margin-top: 0.4rem;
 }
 body[data-slug="index"] article ul li {
-  position: relative;            /* stretched-link + 썸네일 absolute 기준 */
-  margin: 0; background: #f6f7f9; border: 1px solid #ebedf0; border-radius: 14px;
-  padding: 1.35rem 1.5rem 1.35rem calc(200px + 2.6rem);
-  min-height: 165px;
-  font-size: 0.92rem; color: var(--gray); line-height: 1.6;
-  transition: box-shadow .15s, transform .15s, border-color .15s;
+  position: relative;                    /* stretched-link + 썸네일 기준 */
+  margin: 0;
+  padding: 1.45rem 200px 1.45rem 0.2rem; /* 우측 = 썸네일 168px + 여백 */
+  min-height: 150px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 0.9rem; color: var(--gray); line-height: 1.6;
+  transition: background .14s;
 }
-:root[saved-theme="dark"] body[data-slug="index"] article ul li { background: #17191e; border-color: #2a2d34; }
-body[data-slug="index"] article ul li:hover {
-  box-shadow: 0 10px 26px rgba(22,51,25,.12); transform: translateY(-2px); border-color: #cfe0d4;
-}
-:root[saved-theme="dark"] body[data-slug="index"] article ul li:hover { border-color: #34503a; }
-/* 썸네일 (글 첫 이미지 또는 카테고리 일러스트) */
+body[data-slug="index"] article ul li:last-child { border-bottom: none; }
+body[data-slug="index"] article ul li:hover { background: rgba(100, 118, 136, 0.045); }
+:root[saved-theme="dark"] body[data-slug="index"] article ul li:hover { background: rgba(200, 203, 208, 0.05); }
+/* 소형 썸네일 (우측, 세로 중앙) */
 body[data-slug="index"] article ul li img {
-  position: absolute; left: 1.2rem; top: 1.2rem;
-  width: 200px; height: calc(100% - 2.4rem);
-  object-fit: cover; border-radius: 10px; box-shadow: none; margin: 0;
-  background: #eaf3ed;
+  position: absolute; right: 0.2rem; top: 50%; transform: translateY(-50%);
+  width: 168px; height: 112px; object-fit: cover;
+  border-radius: 10px; border: 1px solid var(--hairline);
+  margin: 0; box-shadow: none; background: #fff;
 }
-/* 카테고리 라벨 (맨 윗줄) */
+:root[saved-theme="dark"] body[data-slug="index"] article ul li img { background: #1f2126; }
+/* 카테고리 라벨 (포인트 초록, 텍스트만) */
 body[data-slug="index"] article ul li code:first-child {
   background: none; padding: 0; border-radius: 0; margin: 0;
-  color: var(--secondary); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+  color: var(--secondary); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.03em;
 }
-/* 태그 칩 (맨 아랫줄, 카테고리 라벨 외 code) */
+/* 태그 칩 (회색) */
 body[data-slug="index"] article ul li code {
-  background: var(--highlight); color: var(--secondary);
-  font-size: 0.72rem; font-weight: 600;
-  padding: 0.14em 0.6em; border-radius: 999px; margin-right: 0.25rem;
+  background: var(--chip-bg); color: var(--chip-fg);
+  font-size: 0.72rem; font-weight: 500;
+  padding: 0.13em 0.6em; border-radius: 999px; margin-right: 0.3rem;
 }
-/* 제목 — Pretendard라 볼드가 예쁘니 올리브영처럼 굵게 */
+/* 제목 */
 body[data-slug="index"] article ul li a.internal {
-  display: inline-block; margin: 0.5rem 0 0.3rem;
-  font-size: 1.22rem; font-weight: 700; color: var(--dark); line-height: 1.4;
+  display: inline-block; margin: 0.5rem 0 0.25rem;
+  font-size: 1.16rem; font-weight: 700; color: var(--dark);
+  line-height: 1.45; letter-spacing: -0.01em;
+  transition: color .12s;
 }
 body[data-slug="index"] article ul li strong { font-weight: inherit; color: inherit; }
-/* 카드 전체 클릭: 제목 링크를 카드 전체로 확장 */
+body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }
+/* 카드 전체 클릭 */
 body[data-slug="index"] article ul li a.internal::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
 }
-body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }
-/* 모바일: 썸네일을 위 배너로 */
+/* 모바일: 썸네일 축소 유지(우측), 텍스트 우선 */
 @media all and #{$mobile} {
-  body[data-slug="index"] article ul li { padding: 1.15rem 1.2rem; min-height: 0; }
-  body[data-slug="index"] article ul li img {
-    position: static; display: block; width: 100%; height: 150px; margin: 0.15rem 0 0.7rem;
-  }
+  body[data-slug="index"] article ul li { padding: 1.15rem 118px 1.15rem 0.1rem; min-height: 106px; }
+  body[data-slug="index"] article ul li img { width: 104px; height: 72px; border-radius: 8px; }
+  body[data-slug="index"] article ul li a.internal { font-size: 1.04rem; }
 }
 
-/* ===== 아카이브: 연도 그룹 + 날짜·제목·카테고리 칩 리스트 ===== */
+/* ===== 아카이브: 월 그룹 + 날짜·제목·카테고리(회색 칩) ===== */
+body[data-slug="index"] .center article h2,
 body[data-slug="archive"] .center article h2,
 body[data-slug="categories"] .center article h2 {
   border-left: none; background: none; border-radius: 0;
   padding: 0 0 0.4rem;
   border-bottom: 1px solid var(--lightgray);
   margin-top: 2.2rem;
+  font-size: 1.25rem;
+  color: var(--dark);          /* 목록 페이지 헤딩은 중립색 (초록 단계는 본문 전용) */
 }
 body[data-slug="archive"] article ul { list-style: none; padding-left: 0; margin-top: 0.8rem; }
 body[data-slug="archive"] article ul li {
   display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
   margin: 0; padding: 0.5rem 0.15rem;
-  border-bottom: 1px dashed var(--lightgray);
+  border-bottom: 1px dashed var(--hairline);
 }
 body[data-slug="archive"] article ul li:last-child { border-bottom: none; }
 body[data-slug="archive"] article ul li > code:first-child {
   background: none; color: var(--gray); padding: 0;
-  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em; flex-shrink: 0;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.03em; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 body[data-slug="archive"] article ul li > a.internal {
   background: none; color: var(--dark); font-weight: 500; flex: 1 1 auto; min-width: 12rem;
 }
 body[data-slug="archive"] article ul li > a.internal:hover { color: var(--secondary); }
 body[data-slug="archive"] article ul li > code:last-child {
-  background: var(--highlight); color: var(--secondary);
-  font-size: 0.72rem; font-weight: 700; padding: 0.1em 0.6em; border-radius: 999px; flex-shrink: 0;
+  background: var(--chip-bg); color: var(--chip-fg);
+  font-size: 0.72rem; font-weight: 500; padding: 0.12em 0.6em; border-radius: 999px; flex-shrink: 0;
 }
 
-/* ===== 카테고리: 그룹 아래 [이름|숫자] 두 쪽 알약 칩 =====
-   마크다운은 [[폴더/index|이름]]`N` 처럼 링크와 숫자를 공백 없이 붙여 쓴다
-   — 인라인 배치라 붙어 있으면 이름·숫자 쌍이 줄바꿈에서 안 찢어진다 */
-body[data-slug="categories"] article p:has(> a.internal + code) { margin: 1.1rem 0; line-height: 3; }
-body[data-slug="categories"] article p > a.internal {
-  display: inline-flex; align-items: center; height: 2.3rem; vertical-align: middle;
-  background: none; color: var(--dark); font-weight: 600; line-height: 1.2;
-  border: 1px solid var(--lightgray); border-right: none; border-radius: 10px 0 0 10px;
-  padding: 0 0.85rem;
-  transition: color .12s, border-color .12s, background .12s;
+/* ===== 카테고리: 그룹 아래 [이름|숫자] 두 쪽 알약 칩 (중립톤, 호버만 초록) =====
+   마크다운은 링크와 숫자를 공백 없이 붙여 쓴다 — 쌍이 줄바꿈에서 안 찢어지게 */
+body[data-slug="categories"] article p:has(> a + code) { margin: 1.1rem 0; line-height: 3; }
+body[data-slug="categories"] article p > a {
+  display: inline-flex; align-items: center; height: 2.25rem; vertical-align: middle;
+  background: none; color: var(--darkgray); font-weight: 600; line-height: 1.2;
+  border: 1px solid var(--lightgray); border-right: none; border-radius: 9px 0 0 9px;
+  padding: 0 0.8rem;
+  transition: color .12s, border-color .12s;
 }
 body[data-slug="categories"] article p > code {
-  display: inline-flex; align-items: center; height: 2.3rem; vertical-align: middle;
-  background: var(--highlight); color: var(--secondary);
-  font-size: 0.8rem; font-weight: 700; line-height: 1.2;
-  border: 1px solid var(--lightgray); border-left: none; border-radius: 0 10px 10px 0;
-  padding: 0 0.65rem; margin-right: 0.7rem;
+  display: inline-flex; align-items: center; height: 2.25rem; vertical-align: middle;
+  background: var(--chip-bg); color: var(--chip-fg);
+  font-size: 0.78rem; font-weight: 600; line-height: 1.2;
+  border: 1px solid var(--lightgray); border-left: none; border-radius: 0 9px 9px 0;
+  padding: 0 0.6rem; margin-right: 0.7rem;
 }
-body[data-slug="categories"] article p > a.internal:hover {
-  color: var(--secondary); border-color: var(--secondary); background: var(--highlight);
+body[data-slug="categories"] article p > a:hover {
+  color: var(--secondary); border-color: var(--secondary);
 }
-body[data-slug="categories"] article p > a.internal:hover + code { border-color: var(--secondary); }
+body[data-slug="categories"] article p > a:hover + code { border-color: var(--secondary); color: var(--secondary); }
+
+/* 세분(소카테) 칩 = 태그 검색 모양: #이름 + 옅은 카운트, 폴더 pill보다 작고 둥글게.
+   /tags/ 링크가 태그 칩 — 누르면 해당 글 목록이 바로 보인다 */
+body[data-slug="categories"] article p > a[href*="/tags/"] {
+  border: none; background: var(--chip-bg); color: var(--chip-fg);
+  height: 1.95rem; border-radius: 999px 0 0 999px; padding: 0 0.2rem 0 0.8rem;
+  font-weight: 500; font-size: 0.88rem;
+}
+body[data-slug="categories"] article p > a[href*="/tags/"]::before {
+  content: "#"; opacity: 0.5; margin-right: 1px;
+}
+body[data-slug="categories"] article p > a[href*="/tags/"] + code {
+  border: none; background: var(--chip-bg); color: var(--gray);
+  height: 1.95rem; border-radius: 0 999px 999px 0; padding: 0 0.7rem 0 0.35rem;
+  font-size: 0.72rem; font-weight: 600;
+}
+body[data-slug="categories"] article p > a[href*="/tags/"]:hover {
+  color: var(--secondary); background: var(--highlight);
+}
+body[data-slug="categories"] article p > a[href*="/tags/"]:hover + code {
+  color: var(--secondary); background: var(--highlight);
+}
 
 /* ===== 목록·소개 페이지: 날짜 메타와 우측 목차(TOC) 숨김 ===== */
 body[data-slug="index"] .content-meta,

@@ -26,7 +26,7 @@ configuration:
         darkgray: "#323b44"
         dark: "#222a31"
         secondary: "#1f6e3a"
-        tertiary: "#2e8b57"
+        tertiary: "#1f6e3a"
         highlight: rgba(31, 110, 58, 0.08)
         textHighlight: "#fde68a99"
       darkMode:
@@ -36,7 +36,7 @@ configuration:
         darkgray: "#c8cbd0"
         dark: "#eceef1"
         secondary: "#6dc48a"
-        tertiary: "#8fd9a8"
+        tertiary: "#6dc48a"
         highlight: rgba(109, 196, 138, 0.12)
         textHighlight: "#b3aa0288"
 plugins:

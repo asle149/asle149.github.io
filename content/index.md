@@ -8,9 +8,9 @@ title: 김민솔
 
 - `알고리즘` · 2026-07-05<br>![[Pasted image 20260705194718.png]]<br>**[[ps-12914|(DP) 12914: 멀리 뛰기]]**<br>`#DP`
 - `알고리즘` · 2026-07-05<br>![[Pasted image 20260705191951.png]]<br>**[[ps-138476|(해시맵) 138476: 귤 고르기]]**<br>`#해시맵` `#정렬` `#그리디`
-- `사이드 프로젝트` · 2026-07-05<br>![[susuggang-cors-blocked-console.png]]<br>**[[susuggang-03|(수수깡) CORS 문제 해결]]**<br>`#수수깡` `#CORS`
-- `사이드 프로젝트` · 2026-07-05<br>![[susuggang-kafka-topics.png]]<br>**[[susuggang-02|(수수깡) 카프카 활용]]**<br>`#수수깡` `#카프카`
-- `사이드 프로젝트` · 2026-07-05<br>![](/static/thumbs/side-project.svg)<br>**[[susuggang-01|(수수깡) 재고 차감 락 3종 실측 비교]]**<br>`#수수깡` `#동시성`
+- `수수깡` · 2026-07-05<br>![[susuggang-cors-blocked-console.png]]<br>**[[susuggang-03|(수수깡) CORS 문제 해결]]**<br>`#수수깡` `#CORS`
+- `수수깡` · 2026-07-05<br>![[susuggang-kafka-topics.png]]<br>**[[susuggang-02|(수수깡) 카프카 활용]]**<br>`#수수깡` `#카프카`
+- `수수깡` · 2026-07-05<br>![](/static/thumbs/side-project.svg)<br>**[[susuggang-01|(수수깡) 재고 차감 락 3종 실측 비교]]**<br>`#수수깡` `#동시성`
 - `AI` · 2026-07-04<br>![[bbg-agent-memory-04-hierarchy.png]]<br>**[[ai-agent-memory|AI 에이전트 메모리 관리 (Hierarchy, Types)]]**<br>컨텍스트 윈도우~콜드 아카이브 계층(promote/demote)과 working·episodic·semantic·procedural 네 종류 — 장소 축과 내용 축으로 나눠 보는 에이전트 기억.<br>`#AI에이전트` `#LLM` `#바이트바이트고`
 - `알고리즘` · 2026-07-04<br>![[Pasted image 20260704221019.png]]<br>**[[ps-42842|(완전탐색) 42842: 카펫]]**<br>`#완전탐색`
 - `알고리즘` · 2026-07-04<br>![[Pasted image 20260704213826.png]]<br>**[[ps-12973|(스택) 12973: 짝지어 제거하기]]**<br>`#스택`

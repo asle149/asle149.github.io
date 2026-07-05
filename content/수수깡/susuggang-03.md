@@ -8,6 +8,9 @@ draft: false
 publish: true
 modified: 2026-07-05 12:46
 date: 2026-07-05
+category: 수수깡
+aliases:
+  - "사이드 프로젝트/susuggang-03"
 ---
 
 프론트( `localhost:5173`)에서 백엔드(`localhost:8080`)의 상품 목록을 불러오자 오류가 떴다.
