@@ -2,8 +2,6 @@
 title: Stop-The-World (STW)
 date: 2026-06-23
 tags:
-  - CS
-  - JVM
   - GC
   - 면접준비
 draft: false

@@ -2,9 +2,8 @@
 created: 2026-07-05 13:36
 tags:
   - AI에이전트
-  - LLM메모리
+  - LLM
   - 바이트바이트고
-  - CS
 modified: 2026-07-05 15:49
 title: AI 에이전트 메모리 관리 (Hierarchy, Types)
 category: AI

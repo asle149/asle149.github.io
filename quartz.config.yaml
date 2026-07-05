@@ -142,7 +142,7 @@ plugins:
   - source: github:quartz-community/tag-page
     enabled: true
   - source: github:quartz-community/explorer
-    enabled: true
+    enabled: false
     options:
       title: 카테고리
       folderDefaultState: open

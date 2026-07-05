@@ -2,9 +2,7 @@
 title: 낙관적 락과 펜싱 토큰
 date: 2026-06-23
 tags:
-  - CS
   - JPA
-  - 동시성
   - 분산시스템
   - 면접준비
 draft: false

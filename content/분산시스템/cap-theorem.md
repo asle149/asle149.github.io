@@ -2,8 +2,6 @@
 title: CAP 이론
 date: 2026-06-23
 tags:
-  - CS
-  - 분산시스템
   - NoSQL
   - 면접준비
 draft: false

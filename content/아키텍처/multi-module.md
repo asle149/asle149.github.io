@@ -2,9 +2,7 @@
 title: 멀티 모듈
 date: 2026-06-23
 tags:
-  - CS
-  - 백엔드
-  - 아키텍처
+  - Gradle
   - 면접준비
 draft: false
 category: 아키텍처

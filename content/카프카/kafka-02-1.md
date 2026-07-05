@@ -5,8 +5,8 @@ title: 02-1. 카프카 기본 개념 설명(카프카 브로커와 클러스터)
 date: 2026-07-02
 draft: false
 tags:
-  - CS
-  - 카프카
+  - 브로커
+  - 클러스터
 category: ""
 slug: kafka-02-1
 description: ""

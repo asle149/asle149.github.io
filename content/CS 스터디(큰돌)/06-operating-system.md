@@ -2,7 +2,6 @@
 title: 운영체제2
 date: 2026-06-23
 tags:
-  - CS
   - 운영체제
   - 면접준비
 draft: false

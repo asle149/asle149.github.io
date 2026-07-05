@@ -4,7 +4,6 @@ created: 2026-07-04 23:25
 tags:
   - 수수깡
   - CORS
-  - 사이드프로젝트
 draft: false
 publish: true
 modified: 2026-07-05 12:46

@@ -34,30 +34,100 @@
 }
 .top-nav-links a:hover { color: #ffffff; }
 
-/* ===== libdoc 느낌 사이드바 ===== */
-.left.sidebar { background-color: #f4f5f7; border-right: 1px solid #e2e5ea; padding-top: 1.4rem; }
-:root[saved-theme="dark"] .left.sidebar { background-color: #1b1d22; border-right-color: #2a2d34; }
-.page-title a { font-weight: 800; letter-spacing: -0.01em; }
+/* ===== 왼쪽 사이드바: explorer 제거 후 툴바(검색·다크모드)만 담백하게 ===== */
+.left.sidebar { padding-top: 1.4rem; }
 .search > .search-button {
   width: 100%; justify-content: flex-start; gap: 0.4rem;
   background: #fff; border: 1px solid #d8dce3; border-radius: 8px; padding: 0.5rem 0.7rem; color: #647688;
 }
 .search > .search-button:hover { border-color: var(--secondary); }
 :root[saved-theme="dark"] .search > .search-button { background: #15171b; border-color: #2a2d34; }
-.explorer .nav-folder-title { font-weight: 700; color: var(--dark); padding: 0.3rem 0.45rem; border-radius: 6px; }
-.explorer .nav-folder-title:hover { background: var(--highlight); }
-.explorer .nav-file-title { color: var(--gray); padding: 0.25rem 0.45rem 0.25rem 1rem; border-radius: 6px; }
-.explorer .nav-file-title:hover { background: var(--highlight); color: var(--secondary); }
 
 /* ===== 제목·프론트매터·본문 같은 폭/정렬 ===== */
 .center { padding-left: 2rem; padding-right: 2rem; }
 .center > * { max-width: 760px; margin-inline: auto; }
-.center article { line-height: 1.7; }
-.center article h1, .center article h2, .center article h3 { font-weight: 800; }
-.center article h2 { margin-top: 2.2rem; padding-bottom: 0.35rem; border-bottom: 2px solid #eef0f3; }
-:root[saved-theme="dark"] .center article h2 { border-bottom-color: #2a2d34; }
+.article-title { font-weight: 800; letter-spacing: -0.02em; }
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
+
+/* ===== 본문 타이포그래피 (블루토파즈 느낌 · 초록 톤) ===== */
+.center article { line-height: 1.75; }
+.center article h1, .center article h2, .center article h3 { font-weight: 800; }
+
+/* 본문 h1 (#을 최상위 섹션으로 쓰는 글): 초록 밑줄 */
+.center article h1 {
+  font-size: 1.5rem;
+  margin-top: 2.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--secondary);
+}
+/* h2: 왼쪽 초록 바 + 옅은 초록 배경 밴드 */
+.center article h2 {
+  margin-top: 2.4rem;
+  padding: 0.4rem 0.85rem;
+  border-left: 4px solid var(--secondary);
+  background: linear-gradient(90deg, var(--highlight), transparent 78%);
+  border-radius: 0 8px 8px 0;
+}
+/* h3: 초록 텍스트 */
+.center article h3 { margin-top: 2rem; color: var(--secondary); }
+.center article h4, .center article h5, .center article h6 { color: var(--darkgray); }
+
+/* 볼드 = 초록 강조 */
+.center article p strong,
+.center article li strong,
+.center article td strong,
+.center article blockquote strong { color: var(--secondary); }
+
+/* 인라인 코드: 초록 틴트 칩 */
+.center article :not(pre) > code {
+  background: var(--highlight);
+  color: var(--secondary);
+  padding: 0.12em 0.45em;
+  border-radius: 6px;
+  font-size: 0.83em;
+  font-weight: 600;
+}
+
+/* 인용문: 초록 바 + 틴트 배경 (콜아웃 제외) */
+.center article blockquote:not(.callout) {
+  border-left: 4px solid var(--secondary);
+  background: var(--highlight);
+  border-radius: 0 10px 10px 0;
+  padding: 0.75rem 1.15rem;
+  margin: 1.4rem 0;
+}
+/* 콜아웃 둥글게 */
+.center article .callout { border-radius: 10px; }
+
+/* 리스트 마커 초록 */
+.center article li::marker { color: var(--secondary); font-weight: 700; }
+
+/* 표: 초록 틴트 헤더 + 라운드 */
+.center article table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.center article th {
+  background: var(--highlight);
+  border-bottom: 2px solid var(--secondary);
+  padding: 0.55rem 0.85rem;
+}
+.center article td { padding: 0.5rem 0.85rem; border-bottom: 1px solid var(--lightgray); }
+.center article tbody tr:last-child td { border-bottom: none; }
+.center article tbody tr:hover { background: var(--highlight); }
+
+/* 구분선·이미지 */
+.center article hr {
+  border: none;
+  height: 2px;
+  margin: 2.4rem auto;
+  background: linear-gradient(90deg, var(--secondary), transparent);
+}
+.center article img { border-radius: 10px; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07); }
 
 /* ===== 대문 카드: 1열 풀폭 + 카드 전체 클릭 ===== */
 body[data-slug="index"] article ul {
@@ -84,12 +154,65 @@ body[data-slug="index"] article ul li a.internal {
   display: inline-block; margin: 0.45rem 0 0.35rem; font-size: 1.3rem; font-weight: 400; color: var(--dark);
 }
 /* 마크다운 **굵게**(strong)도 카드 제목에선 굵기 상속 → 볼드 해제 */
-body[data-slug="index"] article ul li strong { font-weight: inherit; }
+body[data-slug="index"] article ul li strong { font-weight: inherit; color: inherit; }
 /* 카드 전체를 클릭 가능하게: 제목 링크를 카드 전체로 확장 */
 body[data-slug="index"] article ul li a.internal::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
 }
 body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }
+
+/* ===== 아카이브: 연도 그룹 + 날짜·제목·카테고리 칩 리스트 ===== */
+body[data-slug="archive"] .center article h2,
+body[data-slug="categories"] .center article h2 {
+  border-left: none; background: none; border-radius: 0;
+  padding: 0 0 0.4rem;
+  border-bottom: 1px solid var(--lightgray);
+  margin-top: 2.2rem;
+}
+body[data-slug="archive"] article ul { list-style: none; padding-left: 0; margin-top: 0.8rem; }
+body[data-slug="archive"] article ul li {
+  display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
+  margin: 0; padding: 0.5rem 0.15rem;
+  border-bottom: 1px dashed var(--lightgray);
+}
+body[data-slug="archive"] article ul li:last-child { border-bottom: none; }
+body[data-slug="archive"] article ul li > code:first-child {
+  background: none; color: var(--gray); padding: 0;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em; flex-shrink: 0;
+}
+body[data-slug="archive"] article ul li > a.internal {
+  background: none; color: var(--dark); font-weight: 500; flex: 1 1 auto; min-width: 12rem;
+}
+body[data-slug="archive"] article ul li > a.internal:hover { color: var(--secondary); }
+body[data-slug="archive"] article ul li > code:last-child {
+  background: var(--highlight); color: var(--secondary);
+  font-size: 0.72rem; font-weight: 700; padding: 0.1em 0.6em; border-radius: 999px; flex-shrink: 0;
+}
+
+/* ===== 카테고리: 그룹 아래 [이름|숫자] 두 쪽 알약 칩 ===== */
+body[data-slug="categories"] article p {
+  display: flex; flex-wrap: wrap; gap: 0.6rem 0; align-items: stretch; margin: 1rem 0;
+}
+body[data-slug="categories"] article p > a.internal {
+  display: inline-flex; align-items: center;
+  background: none; color: var(--dark); font-weight: 600;
+  border: 1px solid var(--lightgray); border-right: none; border-radius: 10px 0 0 10px;
+  padding: 0.4rem 0.85rem;
+  transition: color .12s, border-color .12s, background .12s;
+}
+body[data-slug="categories"] article p > code {
+  display: inline-flex; align-items: center;
+  background: var(--highlight); color: var(--secondary);
+  font-size: 0.8rem; font-weight: 700;
+  border: 1px solid var(--lightgray); border-left: none; border-radius: 0 10px 10px 0;
+  padding: 0 0.65rem; margin-right: 0.8rem;
+}
+body[data-slug="categories"] article p > a.internal:hover {
+  color: var(--secondary); border-color: var(--secondary); background: var(--highlight);
+}
+body[data-slug="categories"] article p > a.internal:hover + code { border-color: var(--secondary); }
+/* 카테고리 첫 문단(안내문)은 칩 스타일 제외 */
+body[data-slug="categories"] article > p:first-of-type { display: block; }
 
 /* ===== 글이 아닌 페이지(대문·카테고리·아카이브·About)엔 날짜 숨김 ===== */
 body[data-slug="index"] .content-meta,

@@ -4,7 +4,6 @@ created: 2026-07-04 23:24
 tags:
   - 수수깡
   - 카프카
-  - 사이드프로젝트
 draft: false
 publish: false
 modified: 2026-07-05 12:15

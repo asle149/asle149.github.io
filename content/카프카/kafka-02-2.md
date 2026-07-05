@@ -5,8 +5,8 @@ title: 02-2. 카프카 기본 개념 설명 (토픽, 파티션, 레코드)
 date: 2026-07-02
 draft: false
 tags:
-  - CS
-  - 카프카
+  - 토픽
+  - 파티션
 category: ""
 slug: kafka-02-2
 description: ""
