@@ -1,5 +1,11 @@
 @use "./variables.scss" as *;
 
+/* ===== 폰트: Pretendard Variable (Head.tsx에서 로드) — 한글 볼드가 단정함 ===== */
+:root {
+  --bodyFont: "Pretendard Variable", Pretendard, "IBM Plex Sans KR", -apple-system, "Noto Sans KR", sans-serif;
+  --headerFont: "Pretendard Variable", Pretendard, "IBM Plex Sans KR", -apple-system, "Noto Sans KR", sans-serif;
+}
+
 /* ===== 상단 네비바 (포인트 컬러 = 진한 초록 #163319) ===== */
 .top-nav {
   width: 100%;
@@ -34,7 +40,7 @@
 }
 .top-nav-links a:hover { color: #ffffff; }
 
-/* ===== 왼쪽 사이드바: explorer 제거 후 툴바(검색·다크모드)만 담백하게 ===== */
+/* ===== 왼쪽 사이드바: 툴바(검색·다크모드)만 담백하게 ===== */
 .left.sidebar { padding-top: 1.4rem; }
 .search > .search-button {
   width: 100%; justify-content: flex-start; gap: 0.4rem;
@@ -50,60 +56,61 @@
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
 
-/* ===== 본문 타이포그래피 (블루토파즈 느낌 · 초록 톤) ===== */
+/* ===== 본문 타이포그래피 — 색은 "헤더에만" (왼쪽 바 + 점점 연해지는 초록 밴드) ===== */
 .center article { line-height: 1.75; }
 .center article h1, .center article h2, .center article h3 { font-weight: 800; }
 
-/* 본문 h1 (#을 최상위 섹션으로 쓰는 글): 초록 밑줄 */
+/* 헤더 공통: 왼쪽 초록 바 + 오른쪽으로 갈수록 옅어지는 배경. 레벨이 내려갈수록 농도도 연해짐 */
 .center article h1 {
   font-size: 1.5rem;
   margin-top: 2.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--secondary);
+  padding: 0.45rem 0.9rem;
+  border-left: 5px solid var(--secondary);
+  background: linear-gradient(90deg, rgba(31, 110, 58, 0.16), rgba(31, 110, 58, 0) 88%);
+  border-radius: 0 8px 8px 0;
 }
-/* h2: 왼쪽 초록 바 + 옅은 초록 배경 밴드 */
 .center article h2 {
   margin-top: 2.4rem;
   padding: 0.4rem 0.85rem;
   border-left: 4px solid var(--secondary);
-  background: linear-gradient(90deg, var(--highlight), transparent 78%);
+  background: linear-gradient(90deg, rgba(31, 110, 58, 0.1), rgba(31, 110, 58, 0) 80%);
   border-radius: 0 8px 8px 0;
 }
-/* h3: 초록 텍스트 */
-.center article h3 { margin-top: 2rem; color: var(--secondary); }
+.center article h3 {
+  margin-top: 2rem;
+  padding: 0.3rem 0.75rem;
+  border-left: 3px solid rgba(31, 110, 58, 0.55);
+  background: linear-gradient(90deg, rgba(31, 110, 58, 0.05), rgba(31, 110, 58, 0) 70%);
+  border-radius: 0 6px 6px 0;
+}
+:root[saved-theme="dark"] .center article h1 {
+  background: linear-gradient(90deg, rgba(109, 196, 138, 0.2), rgba(109, 196, 138, 0) 88%);
+}
+:root[saved-theme="dark"] .center article h2 {
+  background: linear-gradient(90deg, rgba(109, 196, 138, 0.13), rgba(109, 196, 138, 0) 80%);
+}
+:root[saved-theme="dark"] .center article h3 {
+  border-left-color: rgba(109, 196, 138, 0.55);
+  background: linear-gradient(90deg, rgba(109, 196, 138, 0.07), rgba(109, 196, 138, 0) 70%);
+}
 .center article h4, .center article h5, .center article h6 { color: var(--darkgray); }
 
-/* 볼드 = 초록 강조 */
-.center article p strong,
-.center article li strong,
-.center article td strong,
-.center article blockquote strong { color: var(--secondary); }
-
-/* 인라인 코드: 초록 틴트 칩 */
+/* 본문 요소는 중립 톤 (볼드·코드·인용·표에 색 안 씀) */
 .center article :not(pre) > code {
-  background: var(--highlight);
-  color: var(--secondary);
+  background: rgba(100, 118, 136, 0.1);
   padding: 0.12em 0.45em;
   border-radius: 6px;
   font-size: 0.83em;
-  font-weight: 600;
 }
-
-/* 인용문: 초록 바 + 틴트 배경 (콜아웃 제외) */
+:root[saved-theme="dark"] .center article :not(pre) > code { background: rgba(200, 203, 208, 0.12); }
 .center article blockquote:not(.callout) {
-  border-left: 4px solid var(--secondary);
-  background: var(--highlight);
+  border-left: 4px solid var(--lightgray);
+  background: rgba(100, 118, 136, 0.05);
   border-radius: 0 10px 10px 0;
   padding: 0.75rem 1.15rem;
   margin: 1.4rem 0;
 }
-/* 콜아웃 둥글게 */
 .center article .callout { border-radius: 10px; }
-
-/* 리스트 마커 초록 */
-.center article li::marker { color: var(--secondary); font-weight: 700; }
-
-/* 표: 초록 틴트 헤더 + 라운드 */
 .center article table {
   border-collapse: separate;
   border-spacing: 0;
@@ -112,32 +119,26 @@
   overflow: hidden;
 }
 .center article th {
-  background: var(--highlight);
-  border-bottom: 2px solid var(--secondary);
+  background: rgba(100, 118, 136, 0.07);
+  border-bottom: 1px solid var(--lightgray);
   padding: 0.55rem 0.85rem;
 }
 .center article td { padding: 0.5rem 0.85rem; border-bottom: 1px solid var(--lightgray); }
 .center article tbody tr:last-child td { border-bottom: none; }
-.center article tbody tr:hover { background: var(--highlight); }
-
-/* 구분선·이미지 */
-.center article hr {
-  border: none;
-  height: 2px;
-  margin: 2.4rem auto;
-  background: linear-gradient(90deg, var(--secondary), transparent);
-}
+.center article hr { border: none; height: 1px; margin: 2.4rem auto; background: var(--lightgray); }
 .center article img { border-radius: 10px; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07); }
 
-/* ===== 대문 카드: 1열 풀폭 + 카드 전체 클릭 ===== */
+/* ===== 대문 카드: 올리브영테크식 가로형 (좌 썸네일 + 우 텍스트, 카드 전체 클릭) ===== */
 body[data-slug="index"] article ul {
   list-style: none; padding-left: 0;
-  display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.2rem;
+  display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-top: 1.2rem;
 }
 body[data-slug="index"] article ul li {
-  position: relative;            /* stretched-link 기준 */
+  position: relative;            /* stretched-link + 썸네일 absolute 기준 */
   margin: 0; background: #f6f7f9; border: 1px solid #ebedf0; border-radius: 14px;
-  padding: 1.4rem 1.6rem; line-height: 1.6;
+  padding: 1.35rem 1.5rem 1.35rem calc(200px + 2.6rem);
+  min-height: 165px;
+  font-size: 0.92rem; color: var(--gray); line-height: 1.6;
   transition: box-shadow .15s, transform .15s, border-color .15s;
 }
 :root[saved-theme="dark"] body[data-slug="index"] article ul li { background: #17191e; border-color: #2a2d34; }
@@ -145,21 +146,42 @@ body[data-slug="index"] article ul li:hover {
   box-shadow: 0 10px 26px rgba(22,51,25,.12); transform: translateY(-2px); border-color: #cfe0d4;
 }
 :root[saved-theme="dark"] body[data-slug="index"] article ul li:hover { border-color: #34503a; }
-/* 카테고리·날짜 (맨 윗줄) */
+/* 썸네일 (글 첫 이미지 또는 카테고리 일러스트) */
+body[data-slug="index"] article ul li img {
+  position: absolute; left: 1.2rem; top: 1.2rem;
+  width: 200px; height: calc(100% - 2.4rem);
+  object-fit: cover; border-radius: 10px; box-shadow: none; margin: 0;
+  background: #eaf3ed;
+}
+/* 카테고리 라벨 (맨 윗줄) */
+body[data-slug="index"] article ul li code:first-child {
+  background: none; padding: 0; border-radius: 0; margin: 0;
+  color: var(--secondary); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+}
+/* 태그 칩 (맨 아랫줄, 카테고리 라벨 외 code) */
 body[data-slug="index"] article ul li code {
-  background: none; padding: 0; color: var(--secondary); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+  background: var(--highlight); color: var(--secondary);
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.14em 0.6em; border-radius: 999px; margin-right: 0.25rem;
 }
-/* 제목 (볼드 빼고 한/영 굵기 통일 — font-weight 400) */
+/* 제목 — Pretendard라 볼드가 예쁘니 올리브영처럼 굵게 */
 body[data-slug="index"] article ul li a.internal {
-  display: inline-block; margin: 0.45rem 0 0.35rem; font-size: 1.3rem; font-weight: 400; color: var(--dark);
+  display: inline-block; margin: 0.5rem 0 0.3rem;
+  font-size: 1.22rem; font-weight: 700; color: var(--dark); line-height: 1.4;
 }
-/* 마크다운 **굵게**(strong)도 카드 제목에선 굵기 상속 → 볼드 해제 */
 body[data-slug="index"] article ul li strong { font-weight: inherit; color: inherit; }
-/* 카드 전체를 클릭 가능하게: 제목 링크를 카드 전체로 확장 */
+/* 카드 전체 클릭: 제목 링크를 카드 전체로 확장 */
 body[data-slug="index"] article ul li a.internal::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
 }
 body[data-slug="index"] article ul li:hover a.internal { color: var(--secondary); }
+/* 모바일: 썸네일을 위 배너로 */
+@media all and #{$mobile} {
+  body[data-slug="index"] article ul li { padding: 1.15rem 1.2rem; min-height: 0; }
+  body[data-slug="index"] article ul li img {
+    position: static; display: block; width: 100%; height: 150px; margin: 0.15rem 0 0.7rem;
+  }
+}
 
 /* ===== 아카이브: 연도 그룹 + 날짜·제목·카테고리 칩 리스트 ===== */
 body[data-slug="archive"] .center article h2,
@@ -212,8 +234,12 @@ body[data-slug="categories"] article p > a.internal:hover {
 }
 body[data-slug="categories"] article p > a.internal:hover + code { border-color: var(--secondary); }
 
-/* ===== 글이 아닌 페이지(대문·카테고리·아카이브·About)엔 날짜 숨김 ===== */
+/* ===== 목록·소개 페이지: 날짜 메타와 우측 목차(TOC) 숨김 ===== */
 body[data-slug="index"] .content-meta,
 body[data-slug="categories"] .content-meta,
 body[data-slug="archive"] .content-meta,
 body[data-slug="about"] .content-meta { display: none; }
+body[data-slug="index"] .toc,
+body[data-slug="categories"] .toc,
+body[data-slug="archive"] .toc,
+body[data-slug="about"] .toc { display: none; }
