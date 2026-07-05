@@ -160,11 +160,8 @@ plugins:
   - source: github:quartz-community/search
     enabled: true
     layout:
-      position: left
-      priority: 20
-      group: toolbar
-      groupOptions:
-        grow: true
+      position: right
+      priority: 5
   - source: github:quartz-community/backlinks
     enabled: false
     layout:
@@ -270,12 +267,8 @@ layout:
     folder:
       exclude:
         - reader-mode
-      positions:
-        right: []
     tag:
       exclude:
         - reader-mode
-      positions:
-        right: []
     canvas: {}
     bases: {}
