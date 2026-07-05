@@ -3,10 +3,10 @@ title: "[수수깡] CORS 문제 해결"
 created: 2026-07-04 23:25
 tags:
   - 수수깡
-  - 블로그초안
   - CORS
+  - 사이드프로젝트
 draft: false
-publish: false
+publish: true
 modified: 2026-07-05 12:46
 date: 2026-07-05
 ---
