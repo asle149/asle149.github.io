@@ -41,6 +41,8 @@
   letter-spacing: -0.01em;
   text-decoration: none;
   background: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .top-nav-brand:hover { color: #bfe3c8; }
 .top-nav-links { display: flex; gap: 1.5rem; }
@@ -54,19 +56,83 @@
 }
 .top-nav-links a:hover { color: #ffffff; }
 
-/* ===== 왼쪽 사이드바: 툴바(검색·다크모드)만 담백하게 ===== */
-.left.sidebar { padding-top: 1.4rem; }
-.search > .search-button {
-  width: 100%; justify-content: flex-start; gap: 0.4rem;
-  background: #fff; border: 1px solid #d8dce3; border-radius: 8px; padding: 0.5rem 0.7rem; color: #647688;
+/* ===== 상단바 오른쪽: 메뉴 + 툴(검색·다크모드·리더모드) — 왼쪽 사이드바 대체 ===== */
+.top-nav-right { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+.top-nav-tools { display: flex; align-items: center; gap: 0.35rem; }
+.top-nav-tools .spacer { display: none; }
+.top-nav-tools .search > .search-button {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.13); border: none; border-radius: 7px;
+  padding: 0.32rem 0.7rem; color: #cdddd2; font-size: 0.85rem; cursor: pointer;
 }
-.search > .search-button:hover { border-color: var(--secondary); }
-:root[saved-theme="dark"] .search > .search-button { background: #15171b; border-color: #2a2d34; }
+.top-nav-tools .search > .search-button:hover { background: rgba(255, 255, 255, 0.22); color: #fff; }
+.top-nav-tools .search > .search-button svg { width: 15px; height: 15px; }
+.top-nav-tools .search > .search-button svg .search-path { stroke: #cdddd2; }
+.top-nav-tools button svg { fill: #cdddd2; }
+.top-nav-tools button:hover svg { fill: #ffffff; }
+@media all and #{$mobile} {
+  /* 한 줄 컴팩트: 김민솔 | 카테고리 아카이브 About | 🔍 ☀ 📖 */
+  .top-nav-inner { padding: 0.55rem 0.8rem; gap: 0.5rem; flex-wrap: nowrap; }
+  .top-nav-brand { font-size: 1rem; }
+  .top-nav-right { gap: 0.55rem; flex-wrap: nowrap; }
+  .top-nav-links { gap: 0.65rem; }
+  .top-nav-links a { font-size: 0.8rem; }
+  .top-nav-tools { gap: 0.1rem; }
+  .top-nav-tools .search > .search-button { padding: 0.28rem 0.35rem; background: none; }
+  .top-nav-tools .search > .search-button p { display: none; } /* 아이콘만 */
+  .top-nav-tools button { padding: 0.2rem; }
+}
+
+/* ===== 레이아웃: 왼쪽 칼럼 제거(2열) — 본문이 넓게 쓰도록 ===== */
+.page > #quartz-body {
+  grid-template-columns: auto $sidePanelWidth;
+  grid-template-areas:
+    "grid-header grid-sidebar-right"
+    "grid-center grid-sidebar-right"
+    "grid-footer grid-sidebar-right";
+  @media all and #{$tablet} {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "grid-header"
+      "grid-center"
+      "grid-sidebar-right"
+      "grid-footer";
+  }
+  @media all and #{$mobile} {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "grid-header"
+      "grid-center"
+      "grid-sidebar-right"
+      "grid-footer";
+  }
+}
+
+/* ===== 우측 프로필 카드 ===== */
+.profile-card {
+  display: flex; gap: 0.8rem; align-items: flex-start;
+  border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 0.95rem 1rem; margin-bottom: 0.4rem;
+}
+.profile-avatar {
+  width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #163319; color: #fff; font-weight: 700; font-size: 1.05rem;
+}
+.profile-name { font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+.profile-bio { color: var(--gray); font-size: 0.78rem; line-height: 1.5; margin: 0.2rem 0 0.4rem; }
+.profile-links { display: flex; gap: 0.7rem; }
+.profile-links a { color: var(--secondary); font-size: 0.78rem; font-weight: 600; background: none; }
+@media all and not #{$desktop} {
+  .profile-card { display: none; } /* 모바일·태블릿에선 숨김 */
+}
 
 /* ===== 제목·프론트매터·본문 같은 폭/정렬 ===== */
-.center { padding-left: 2rem; padding-right: 2rem; }
-.center > * { max-width: 760px; margin-inline: auto; }
-.article-title { font-weight: 800; letter-spacing: -0.02em; }
+.center { padding-left: 2.4rem; padding-right: 2.4rem; }
+.center > * { max-width: 860px; margin-inline: auto; }
+.article-title { letter-spacing: -0.02em; }
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
 
@@ -83,11 +149,12 @@
   --h3-green: #6dc48a;
 }
 .center article { line-height: 1.75; }
-.center article h1, .center article h2, .center article h3 { font-weight: 800; letter-spacing: -0.015em; }
-.article-title { color: var(--h1-green); }
-.center article h1 { font-size: 1.5rem; margin-top: 2.8rem; color: var(--h1-green); }
-.center article h2 { margin-top: 2.4rem; color: var(--h2-green); }
-.center article h3 { margin-top: 2rem; color: var(--h3-green); }
+/* 굵기는 담백하게 — 색 단계가 위계를 표현하므로 볼드는 줄인다 */
+.center article h1, .center article h2, .center article h3 { letter-spacing: -0.01em; }
+.article-title { color: var(--h1-green); font-weight: 700; }
+.center article h1 { font-size: 1.45rem; margin-top: 2.8rem; color: var(--h1-green); font-weight: 700; }
+.center article h2 { margin-top: 2.4rem; color: var(--h2-green); font-weight: 600; }
+.center article h3 { margin-top: 2rem; color: var(--h3-green); font-weight: 600; }
 .center article h4, .center article h5, .center article h6 { color: var(--darkgray); }
 
 /* 본문 요소는 중립 톤 */
@@ -230,28 +297,7 @@ body[data-slug="categories"] article p > a:hover {
   color: var(--secondary); border-color: var(--secondary);
 }
 body[data-slug="categories"] article p > a:hover + code { border-color: var(--secondary); color: var(--secondary); }
-
-/* 세분(소카테) 칩 = 태그 검색 모양: #이름 + 옅은 카운트, 폴더 pill보다 작고 둥글게.
-   /tags/ 링크가 태그 칩 — 누르면 해당 글 목록이 바로 보인다 */
-body[data-slug="categories"] article p > a[href*="/tags/"] {
-  border: none; background: var(--chip-bg); color: var(--chip-fg);
-  height: 1.95rem; border-radius: 999px 0 0 999px; padding: 0 0.2rem 0 0.8rem;
-  font-weight: 500; font-size: 0.88rem;
-}
-body[data-slug="categories"] article p > a[href*="/tags/"]::before {
-  content: "#"; opacity: 0.5; margin-right: 1px;
-}
-body[data-slug="categories"] article p > a[href*="/tags/"] + code {
-  border: none; background: var(--chip-bg); color: var(--gray);
-  height: 1.95rem; border-radius: 0 999px 999px 0; padding: 0 0.7rem 0 0.35rem;
-  font-size: 0.72rem; font-weight: 600;
-}
-body[data-slug="categories"] article p > a[href*="/tags/"]:hover {
-  color: var(--secondary); background: var(--highlight);
-}
-body[data-slug="categories"] article p > a[href*="/tags/"]:hover + code {
-  color: var(--secondary); background: var(--highlight);
-}
+/* 소카테(태그 링크) 칩도 폴더 칩과 완전히 같은 모양 — 전부 카테고리처럼 보이게 통일 */
 
 /* ===== 목록·소개 페이지: 날짜 메타와 우측 목차(TOC) 숨김 ===== */
 body[data-slug="index"] .content-meta,

@@ -352,11 +352,19 @@ export function renderPage(
             <a class="top-nav-brand" href={`${basePath}/`}>
               김민솔
             </a>
-            <nav class="top-nav-links">
-              <a href={`${basePath}/categories`}>카테고리</a>
-              <a href={`${basePath}/archive`}>아카이브</a>
-              <a href={`${basePath}/about`}>About</a>
-            </nav>
+            <div class="top-nav-right">
+              <nav class="top-nav-links">
+                <a href={`${basePath}/categories`}>카테고리</a>
+                <a href={`${basePath}/archive`}>아카이브</a>
+                <a href={`${basePath}/about`}>About</a>
+              </nav>
+              {/* 검색·다크모드·리더모드 — 왼쪽 사이드바 대신 상단바에 (left 레이아웃 컴포넌트를 이곳에 렌더) */}
+              <div class="top-nav-tools">
+                {left.map((BodyComponent) => (
+                  <BodyComponent {...componentData} />
+                ))}
+              </div>
+            </div>
           </div>
         </header>
         {frame.css && <style dangerouslySetInnerHTML={{ __html: frame.css }} />}
