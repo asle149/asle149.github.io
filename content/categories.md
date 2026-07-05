@@ -43,3 +43,6 @@ title: 카테고리
 - [[susuggang-03|(수수깡) CORS 문제 해결]]
 - [[susuggang-02|(수수깡) 카프카 활용]]
 - [[susuggang-01|(수수깡) 재고 차감 락 3종 실측 비교]]
+
+## AI (1)
+- [[ai-agent-memory|AI 에이전트 메모리 관리 (Hierarchy, Types)]]
