@@ -350,7 +350,7 @@ export function renderPage(
         <header class="top-nav">
           <div class="top-nav-inner">
             <a class="top-nav-brand" href={`${basePath}/`}>
-              김민솔
+              S5L.log
             </a>
             <div class="top-nav-right">
               <nav class="top-nav-links">
