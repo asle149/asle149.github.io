@@ -385,6 +385,26 @@ export function renderPage(
             ]}
           </Body>
         </div>
+        {/* 폴더·태그 목록 페이지의 날짜를 MM.DD로 축약 (folder-page 플러그인은 "N월 N일" 긴
+            형식으로 렌더 → 아카이브의 07.09와 통일). 표시 텍스트를 파싱해 서버 렌더와 일치,
+            이미 축약된 값은 다시 매칭 안 되므로 nav 재실행에도 안전(idempotent). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                function shortenListDates() {
+                  document.querySelectorAll(".page-listing time").forEach(function (t) {
+                    var m = t.textContent.match(/(\\d+)월\\s*(\\d+)일/);
+                    if (!m) return;
+                    t.textContent = ("0" + m[1]).slice(-2) + "." + ("0" + m[2]).slice(-2);
+                  });
+                }
+                document.addEventListener("nav", shortenListDates);
+                shortenListDates();
+              })();
+            `,
+          }}
+        />
       </body>
       {pageResources.js
         .filter((resource) => resource.loadTime === "afterDOMReady")

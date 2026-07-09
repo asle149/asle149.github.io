@@ -363,10 +363,10 @@ body[data-slug="categories"] article p > a:hover + code { border-color: var(--se
 /* 소카테(태그 링크) 칩도 폴더 칩과 완전히 같은 모양 — 전부 카테고리처럼 보이게 통일 */
 
 /* ===== 목록·소개 페이지: 날짜 메타와 우측 목차(TOC) 숨김 ===== */
-body[data-slug="index"] .content-meta,
-body[data-slug="categories"] .content-meta,
-body[data-slug="archive"] .content-meta,
-body[data-slug="about"] .content-meta { display: none; }
+body[data-slug="index"] .page-header .content-meta,
+body[data-slug="categories"] .page-header .content-meta,
+body[data-slug="archive"] .page-header .content-meta,
+body[data-slug="about"] .page-header .content-meta { display: none; }
 body[data-slug="index"] .toc,
 body[data-slug="categories"] .toc,
 body[data-slug="archive"] .toc,
@@ -399,7 +399,15 @@ body[data-slug="about"] .toc { display: none; }
 body { background: var(--pr-page); }
 
 /* 상단바: 얇은 하단 테두리 + 브랜드 세이지 스티커(.log 모노) + 링크 세이지 밑줄 */
-.top-nav { border-bottom: 1.5px solid var(--pr-ink); }
+/* ⚠️ backdrop-filter 제거 — 이게 있으면 검색 오버레이(fixed)의 containing block이
+   상단바가 되어 오버레이가 상단바 영역에만 갇힌다. 없애야 화면 전체를 덮는다. */
+.top-nav {
+  border-bottom: 1.5px solid var(--pr-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: #ffffff;                 /* 흰색 (blur 없앤 대신 불투명 흰색) */
+}
+:root[saved-theme="dark"] .top-nav { background: #1a1b1e; }
 .top-nav-brand {
   background: var(--pr-accent); color: #14140e;
   border: 1.5px solid var(--pr-ink); border-radius: var(--pr-r);
@@ -431,6 +439,18 @@ body { background: var(--pr-page); }
 .top-nav-right { gap: 0; }
 .top-nav-tools { margin-left: 1.5rem; padding-left: 1.5rem; border-left: 1px solid var(--hairline); }
 .top-nav-tools .search > .search-button { padding: 0.3rem 0.35rem; }
+
+/* 검색 열면 = 화면 전체 균일 딤 (블러 없음 — 뿌연 효과 대신 깔끔한 오버레이).
+   상단바 backdrop-filter를 없앴으므로 이 fixed 오버레이가 화면 전체를 균일하게 덮는다. */
+.search > .search-container {
+  z-index: 9999;                          /* 상단바 위로 확실히 */
+  background: rgba(20, 20, 18, 0.42);     /* 균일한 어두운 딤, 블러 X */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+:root[saved-theme="dark"] .search > .search-container {
+  background: rgba(0, 0, 0, 0.55);
+}
 
 /* 대문: 얇은 테두리 각진 카드 + 큰 썸네일(우측 세로 꽉) */
 body[data-slug="index"] article ul { display: grid; gap: 1.1rem; margin-top: 1.3rem; }
@@ -507,18 +527,59 @@ body[data-slug="categories"] article p > a:hover + code { border-color: var(--pr
 /* 본문(게시글) 이미지는 꾸미지 않음 — 테두리·그림자 없이 담백하게 */
 .center article img { border: none; border-radius: 6px; box-shadow: none; }
 
-/* ===== 코드블럭: 회색 배경으로 페이지와 구분 ===== */
+/* ===== 코드블럭·표·머메이드: 배경 흰색(오프화이트 페이지와 구분) + 얇은 테두리 ===== */
 .center article pre {
-  background: #ecebe4; border: 1px solid #dddcd3; border-radius: 6px;
+  background: #ffffff; border: 1px solid #e6e4dc; border-radius: 6px;
 }
 .center article pre > code { background: none; }
-:root[saved-theme="dark"] .center article pre { background: #1b1c20; border-color: #2c2e34; }
+.center article table { background: #ffffff; }
+.center article th { background: #f6f5f1; }
+.center article .mermaid,
+.center article pre.mermaid,
+.center article figure.mermaid {
+  background: #ffffff; border: 1px solid #e6e4dc; border-radius: 6px; padding: 0.6rem;
+}
+:root[saved-theme="dark"] .center article pre,
+:root[saved-theme="dark"] .center article table,
+:root[saved-theme="dark"] .center article .mermaid { background: #202127; border-color: #2c2e34; }
+:root[saved-theme="dark"] .center article th { background: #26272c; }
 
-/* ===== 게시글: 제목 밑 한 줄에 [#태그 · 날짜], 박스 없이 plain + 헤더/본문 구분선 ===== */
-/* 태그(note-properties) → 박스·라벨 다 벗기고 inline plain 해시태그 */
+/* ===== 게시글 헤더: 티스토리식 3단 — 제목(왼정렬) / 날짜·카테고리 / 태그 =====
+   beforeBody 순서(config priority): article-title(10) → content-meta 날짜(12)
+   → breadcrumbs 카테고리(16) → note-properties 태그(20) */
+
+/* (1) 제목 = .article-title h1 — 이미 왼정렬·h1 초록. 아래 여백만 살짝 */
+.center .page-header .article-title { margin-bottom: 0; }
+
+/* (2) 날짜 · 카테고리 — content-meta(날짜) + breadcrumbs(카테고리)를 한 줄에 */
+.center .page-header .content-meta {
+  display: inline-block; vertical-align: baseline; margin: 0.85rem 0 0; padding: 0;
+  color: var(--gray); font-size: 0.85rem; font-weight: 500;
+}
+.center .page-header .content-meta::before { content: none; }   /* 옛 · 프리픽스 제거 */
+
+/* breadcrumbs = 카테고리 경로만 (showCurrentPage:false + 첫 칸 "Home" 숨김) */
+.center .page-header .breadcrumb-container {
+  display: inline-block; vertical-align: baseline;
+  margin: 0; padding: 0; gap: 0; font-size: 0.85rem; font-weight: 500;
+}
+.center .page-header .breadcrumb-container::before {
+  content: "·"; margin: 0 0.5em; color: var(--gray); opacity: 0.55; font-weight: 400;
+}
+.center .page-header .breadcrumb-element { display: inline; }
+.center .page-header .breadcrumb-element:first-child { display: none; }   /* "Home" 숨김 */
+.center .page-header .breadcrumb-element a {
+  background: none; color: var(--secondary); font-weight: 600;
+}
+.center .page-header .breadcrumb-element a:hover { text-decoration: underline; }
+.center .page-header .breadcrumb-element p {   /* 카테고리 다단계 구분자 ❯ (1단계면 없음) */
+  display: inline; margin: 0 0.15rem; color: var(--gray); opacity: 0.5; font-size: 0.78rem;
+}
+
+/* (3) 태그 = note-properties → 박스·라벨 벗기고 새 줄 inline 해시태그 */
 .note-properties.metadata-container {
-  display: inline; border: none !important; background: none !important; box-shadow: none;
-  margin: 0; padding: 0;
+  display: block; border: none !important; background: none !important; box-shadow: none;
+  margin: 0.5rem 0 0; padding: 0;
 }
 .note-properties-header, .note-properties-key, .note-properties-separator { display: none; }
 .note-properties-table, .note-properties-table tbody, .note-properties-row,
@@ -527,42 +588,99 @@ body[data-slug="categories"] article p > a:hover + code { border-color: var(--pr
 }
 .center .note-properties-tags a.tag-link {
   background: none; border: none; border-radius: 0; padding: 0; margin-right: 0.55em;
-  color: var(--secondary); font-weight: 500; font-size: 0.85rem; background-image: none;
+  color: var(--secondary); font-weight: 500; font-size: 0.83rem; background-image: none;
 }
 .center .note-properties-tags a.tag-link::before { content: "#"; opacity: 0.55; }
 .center .note-properties-tags a.tag-link:hover { background: none; text-decoration: underline; color: var(--secondary); }
-/* 날짜(content-meta) inline — 태그 뒤에 · 로 이어붙임 */
-.popover-hint .content-meta { display: inline; margin: 0; color: var(--gray); font-size: 0.85rem; }
-.popover-hint .content-meta::before { content: "·"; margin: 0 0.55em 0 0.1em; color: var(--gray); opacity: 0.6; }
-/* 헤더(제목·메타) ↔ 본문 구분선 */
+
+/* 헤더(제목·날짜·카테고리·태그) ↔ 본문 구분선 */
 .center .page-header .popover-hint {
   border-bottom: 1px solid var(--hairline); padding-bottom: 1.1rem; margin-bottom: 0.4rem;
 }
 
-/* ===== 카테고리(폴더)/태그 페이지 목록 = 아카이브처럼 한 줄 (제목 + 태그, 카테고리 대신) ===== */
-.page-listing li.section-li { padding: 0.6rem 0.15rem; }
+/* ===== 아카이브·카테고리(폴더) 목록: 가로 한 줄 — 날짜(왼쪽) · 제목 · 카테고리/태그(오른쪽) ===== */
+/* --- 아카이브 --- (DOM: <strong>제목</strong><br><code>날짜</code> · <code>카테고리</code><br><code>#태그</code>…) */
+body[data-slug="archive"] article ul { list-style: none; padding: 0; margin-top: 0.6rem; }
+body[data-slug="archive"] article ul li {
+  display: flex; align-items: baseline; gap: 0.9rem;
+  margin: 0; padding: 0.72rem 0.15rem; line-height: 1.55;
+  border-bottom: 1px dashed var(--hairline);
+  font-size: 0;                     /* li 직속 텍스트노드(" · ", 줄 공백) 숨김 */
+}
+body[data-slug="archive"] article ul li:last-child { border-bottom: none; }
+body[data-slug="archive"] article ul li br { display: none; }
+/* 날짜(1번째 code) = 왼쪽 고정, 파란빛 회색 등폭 */
+body[data-slug="archive"] article ul li > code:nth-of-type(1) {
+  order: 0; flex-shrink: 0;
+  background: none; border: none; padding: 0; border-radius: 0;
+  color: #5b6b7b; font-size: 0.82rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+}
+:root[saved-theme="dark"] body[data-slug="archive"] article ul li > code:nth-of-type(1) { color: #9aa3ad; }
+/* 제목(strong) = 가운데, 남는 폭 채움 */
+body[data-slug="archive"] article ul li > strong { order: 1; flex: 1 1 auto; min-width: 0; font-weight: 600; }
+body[data-slug="archive"] article ul li > strong a {
+  color: var(--pr-ink); font-size: 0.98rem; font-weight: 600; background: none;
+}
+body[data-slug="archive"] article ul li > strong a:hover { color: var(--secondary); }
+/* 카테고리(2번째 code) = 오른쪽 회색 배지 */
+body[data-slug="archive"] article ul li > code:nth-of-type(2) {
+  order: 2; flex-shrink: 0;
+  background: var(--chip-bg); color: var(--chip-fg);
+  border: none; border-radius: 999px; padding: 0.24em 0.75em;
+  font-size: 0.74rem; font-weight: 600;
+}
+/* 태그(3번째 이후 code) = 숨김 (아카이브는 날짜·제목·카테고리만 깔끔하게) */
+body[data-slug="archive"] article ul li > code:nth-of-type(n+3) { display: none; }
+
+/* --- 카테고리(폴더)/태그 페이지 목록: 아카이브와 같은 가로 한 줄 (날짜 왼쪽 · 제목 · 태그 오른쪽) ---
+   DOM: <p class="meta">날짜</p> <div class="desc"><h3><a>제목</a></h3></div> <ul class="tags">…</ul> */
+.page-listing li.section-li {
+  padding: 0.72rem 0.15rem;
+  border-bottom: 1px dashed var(--hairline);
+}
+.page-listing li.section-li:last-child { border-bottom: none; }
 .page-listing li.section-li .section {
-  display: flex; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 0.25rem 0.7rem;
+  display: flex; flex-direction: row; align-items: baseline; gap: 0.9rem;
+  grid-template-columns: unset;
 }
-.page-listing .section .desc { margin: 0; }
-.page-listing .section .desc h3 { margin: 0; font-size: 1rem; font-weight: 600; }
-.page-listing .section .desc h3 a { color: var(--pr-ink); }
+/* 날짜(p.meta) = 왼쪽 고정, 파란빛 회색 등폭 */
+.page-listing .section p.meta {
+  order: 0; flex-shrink: 0; margin: 0;
+  color: #5b6b7b; font-size: 0.82rem; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+:root[saved-theme="dark"] .page-listing .section p.meta { color: #9aa3ad; }
+/* 제목(.desc) = 가운데, 남는 폭 채움 */
+.page-listing .section .desc { order: 1; flex: 1 1 auto; min-width: 0; margin: 0; }
+.page-listing .section .desc h3 { margin: 0; font-size: 0.98rem; font-weight: 600; }
+.page-listing .section .desc h3 a { color: var(--pr-ink); background: none; }
 .page-listing .section .desc h3 a:hover { color: var(--secondary); }
-.page-listing .section > ul.tags, .page-listing .section ul.tags {
-  display: inline-flex; flex-wrap: wrap; gap: 0.4rem; margin: 0;
+/* 태그(ul.tags) = 오른쪽, 회색 해시태그 (폴더는 카테고리가 자명하므로 태그를 오른쪽에) */
+.page-listing .section ul.tags {
+  order: 2; flex-shrink: 0; display: inline-flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 0; list-style: none; padding: 0;
 }
+.page-listing .section ul.tags li { margin: 0; }
 .page-listing .section a.tag-link {
-  background: none; border: none; border-radius: 0; padding: 0;
-  color: var(--gray); font-size: 0.78rem; font-weight: 500;
+  background: var(--chip-bg); color: var(--chip-fg);
+  border: none; border-radius: 999px; padding: 0.24em 0.72em;
+  font-size: 0.72rem; font-weight: 600;
 }
-.page-listing .section a.tag-link::before { content: "#"; opacity: 0.5; }
+.page-listing .section a.tag-link::before { content: none; }
 .page-listing .section a.tag-link:hover { color: var(--secondary); }
 
 /* ===== 설명·날짜 숨김 (피드백) ===== */
 /* 아카이브·카테고리(overview) 인트로 한 줄 */
 body[data-slug="archive"] .markdown-preview-view > p:first-of-type,
 body[data-slug="categories"] .markdown-preview-view > p:first-of-type { display: none; }
-/* 폴더·태그 페이지(.page-listing 있는 페이지): 설명 문단 + 페이지 날짜 + 항목 날짜 */
+/* 폴더·태그 페이지(.page-listing 있는 페이지): 설명 문단 + 페이지(폴더 자체) 날짜만 숨김
+   (항목별 날짜 p.meta 는 새 목록 형식에서 보여줌) */
 .center:has(.page-listing) .markdown-preview-view > p { display: none; }
 .center:has(.page-listing) .content-meta { display: none; }
-.page-listing .section p.meta { display: none; }
+
+/* breadcrumb(카테고리)는 실제 게시글에서만 표시 — 목록·소개 페이지에선
+   "Home"만 남아 숨겨지고 ::before "·"만 뜨는 것 방지 */
+body[data-slug="categories"] .page-header .breadcrumb-container,
+body[data-slug="archive"] .page-header .breadcrumb-container,
+body[data-slug="about"] .page-header .breadcrumb-container,
+.center:has(.page-listing) .breadcrumb-container { display: none; }

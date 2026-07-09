@@ -178,9 +178,9 @@ plugins:
       showReadingTime: false
     layout:
       position: beforeBody
-      priority: 20
+      priority: 12
   - source: github:quartz-community/tag-list
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 30
@@ -203,9 +203,11 @@ plugins:
       group: toolbar
   - source: github:quartz-community/breadcrumbs
     enabled: true
+    options:
+      showCurrentPage: false
     layout:
       position: beforeBody
-      priority: 5
+      priority: 16
       condition: not-index
   - source: github:quartz-community/comments
     enabled: false
@@ -247,7 +249,7 @@ plugins:
     order: 5
     layout:
       position: beforeBody
-      priority: 15
+      priority: 20
       display: all
 layout:
   groups:
