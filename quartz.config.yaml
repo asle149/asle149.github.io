@@ -88,8 +88,9 @@ plugins:
   - source: github:quartz-community/citations
     enabled: false
     order: 85
+  # 옵시디언처럼 엔터 1번 = 줄바꿈으로 렌더 (2026-07-10: "풀이:" 다음 줄이 한 문단으로 붙던 문제)
   - source: github:quartz-community/hard-line-breaks
-    enabled: false
+    enabled: true
     order: 90
   - source: github:quartz-community/ox-hugo
     enabled: false
