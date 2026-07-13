@@ -68,6 +68,9 @@ export default (() => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        {/* 구글 애드센스 사이트 소유권 확인 (2026-07-10) */}
+        <meta name="google-adsense-account" content="ca-pub-2931124855200477" />
+
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
