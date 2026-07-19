@@ -3,7 +3,6 @@ title: 운영체제2
 date: 2026-06-23
 tags:
   - 운영체제
-  - 면접준비
 draft: false
 category: CS 스터디(큰돌)
 created: 2026-06-23 12:27

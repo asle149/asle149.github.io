@@ -49,10 +49,4 @@ title: 김민솔
 - `알고리즘` · 2026-07-01<br>![[Pasted image 20260701153657.png]]<br>**[[정렬] 12941: 최솟값 만들기](/알고리즘/ps-12941)**<br>`#정렬` `#그리디`
 - `알고리즘` · 2026-06-30<br>![[Pasted image 20260630232328.png]]<br>**[[문자열 처리] 12939: 최댓값과 최솟값](/알고리즘/ps-12939)**<br>`#문자열처리`
 - `알고리즘` · 2026-06-30<br>![[Pasted image 20260630230510.png]]<br>**[[스택] 12909: 올바른 괄호](/알고리즘/ps-12909)**<br>`#스택`
-- `CS 스터디(큰돌)` · 2026-06-29<br>![](/static/thumbs/cs-study.svg)<br>**[[08-database|데이터베이스1]]**<br>`#데이터베이스` `#면접준비`
-- `분산시스템` · 2026-06-23<br>![](/static/thumbs/distributed.svg)<br>**[[cap-theorem|CAP 이론]]**<br>`#NoSQL` `#면접준비`
-- `아키텍처` · 2026-06-23<br>![](/static/thumbs/architecture.svg)<br>**[[multi-module|멀티 모듈]]**<br>`#Gradle` `#면접준비`
-- `JVM` · 2026-06-23<br>![](/static/thumbs/jvm.svg)<br>**[[stop-the-world|Stop-The-World (STW)]]**<br>`#GC` `#면접준비`
-- `동시성` · 2026-06-23<br>![](/static/thumbs/concurrency.svg)<br>**[[optimistic-lock-fencing-token|낙관적 락과 펜싱 토큰]]**<br>`#JPA` `#분산시스템` `#면접준비`
-- `분산시스템` · 2026-06-23<br>![](/static/thumbs/distributed.svg)<br>**[[raft|Raft 합의 알고리즘]]**<br>`#합의알고리즘` `#면접준비`
-- `CS 스터디(큰돌)` · 2026-06-23<br>![](/static/thumbs/cs-study.svg)<br>**[[06-operating-system|운영체제2]]**<br>`#운영체제` `#면접준비`
+- `CS 스터디(큰돌)` · 2026-06-29<br>![](/static/thumbs/cs-study.svg)<br>**[[08-database|데이터베이스1]]**<br>`#데이터베이스`- `분산시스템` · 2026-06-23<br>![](/static/thumbs/distributed.svg)<br>**[[cap-theorem|CAP 이론]]**<br>`#NoSQL`- `아키텍처` · 2026-06-23<br>![](/static/thumbs/architecture.svg)<br>**[[multi-module|멀티 모듈]]**<br>`#Gradle`- `JVM` · 2026-06-23<br>![](/static/thumbs/jvm.svg)<br>**[[stop-the-world|Stop-The-World (STW)]]**<br>`#GC`- `동시성` · 2026-06-23<br>![](/static/thumbs/concurrency.svg)<br>**[[optimistic-lock-fencing-token|낙관적 락과 펜싱 토큰]]**<br>`#JPA` `#분산시스템`- `분산시스템` · 2026-06-23<br>![](/static/thumbs/distributed.svg)<br>**[[raft|Raft 합의 알고리즘]]**<br>`#합의알고리즘`- `CS 스터디(큰돌)` · 2026-06-23<br>![](/static/thumbs/cs-study.svg)<br>**[[06-operating-system|운영체제2]]**<br>`#운영체제`

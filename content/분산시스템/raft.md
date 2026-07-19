@@ -3,7 +3,6 @@ title: Raft 합의 알고리즘
 date: 2026-06-23
 tags:
   - 합의알고리즘
-  - 면접준비
 draft: false
 category: 분산시스템
 created: 2026-06-23 18:55

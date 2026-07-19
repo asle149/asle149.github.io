@@ -3,7 +3,6 @@ title: 데이터베이스1 (조인, 트랜잭션, 인덱스)
 date: 2026-06-29
 tags:
   - 데이터베이스
-  - 면접준비
 draft: false
 category: CS 스터디(큰돌)
 slug: 08-database

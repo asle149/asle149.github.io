@@ -3,7 +3,6 @@ title: 멀티 모듈
 date: 2026-06-23
 tags:
   - Gradle
-  - 면접준비
 draft: false
 category: 아키텍처
 created: 2026-06-23 18:56

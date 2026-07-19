@@ -4,7 +4,6 @@ date: 2026-06-23
 tags:
   - JPA
   - 분산시스템
-  - 면접준비
 draft: false
 category: 동시성
 created: 2026-06-23 17:33
