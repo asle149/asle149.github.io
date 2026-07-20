@@ -1,13 +1,15 @@
 ---
 title: 06-2. 카프카 컨슈머 애플리케이션 개발 - 컨슈머 랙
-tags: []
+tags: 
+- 컨슈머
+- 컨슈머랙
 category: ""
 slug: kafka-06-2
 date: 2026-07-20
 draft: false
 description: ""
 created: 2026-07-20 11:19
-modified: 2026-07-20 11:48
+modified: 2026-07-20 11:53
 ---
 # 1. 멀티 스레드 컨슈머 애플리케이션
 ![[Pasted image 20260720112146.png|594]]
