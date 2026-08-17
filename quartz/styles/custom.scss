@@ -188,6 +188,17 @@
 /* ===== 제목·프론트매터·본문 같은 폭/정렬 ===== */
 .center { padding-left: 2.4rem; padding-right: 2.4rem; }
 .center > * { max-width: 860px; margin-inline: auto; }
+/* 글 본문 텍스트는 720px(한 줄 ~43자) — 코드·표·머메이드는 860px 그대로.
+   본문이 article > div(markdown-rendered) 안에 있어 자손 선택자로 건다.
+   대문(index)은 리스트 레이아웃이라 제외 */
+.center article :is(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, hr, .callout) {
+  max-width: 720px;
+  margin-inline: auto;
+}
+body[data-slug="index"] .center article :is(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, hr, .callout) { max-width: none; }
+/* 제목·날짜·태그 줄도 본문(720px)과 왼쪽 정렬 */
+.center .article-title, .center .page-header { max-width: 720px; margin-inline: auto; }
+body[data-slug="index"] .center :is(.article-title, .page-header) { max-width: 860px; }
 .article-title { letter-spacing: -0.02em; }
 .center a.internal { color: var(--secondary); background: none; font-weight: 500; }
 .page-footer a { color: var(--secondary); }
@@ -204,13 +215,17 @@
   --h2-green: #8ad4a3;
   --h3-green: #6dc48a;
 }
-.center article { line-height: 1.75; }
+.center article { font-size: 1.06rem; }
+/* base.scss가 p·li에 line-height: 1.6rem(고정값)을 직접 걸어서
+   article에 상속으로 주면 안 먹는다 — 같은 요소에 직접 걸어야 함 */
+.center article p, .center article li { line-height: 1.78; }
+.center article p { margin-block: 1.35rem; }
 /* 굵기는 담백하게 — 색 단계가 위계를 표현하므로 볼드는 줄인다 */
 .center article h1, .center article h2, .center article h3 { letter-spacing: -0.01em; }
 .article-title { color: var(--h1-green); font-weight: 700; }
-.center article h1 { font-size: 1.45rem; margin-top: 2.8rem; color: var(--h1-green); font-weight: 700; }
-.center article h2 { margin-top: 2.4rem; color: var(--h2-green); font-weight: 700; }
-.center article h3 { margin-top: 2rem; color: var(--h3-green); font-weight: 600; }
+.center article h1 { font-size: 1.7rem; margin-top: 2.8rem; color: var(--h1-green); font-weight: 700; }
+.center article h2 { font-size: 1.5rem; margin-top: 2.4rem; color: var(--h2-green); font-weight: 700; }
+.center article h3 { font-size: 1.25rem; margin-top: 2rem; color: var(--h3-green); font-weight: 600; }
 .center article h4, .center article h5, .center article h6 { color: var(--darkgray); }
 
 /* 본문 요소는 중립 톤 */
@@ -381,7 +396,7 @@ body[data-slug="about"] .toc { display: none; }
   --pr-accent-deep: #a9d29f;
   --pr-ink: #1b1b1d;          /* 얇은 테두리·글자 (다크에선 밝게) */
   --pr-card: #ffffff;
-  --pr-page: #f5f5f1;         /* 살짝 오프화이트 → 흰 카드가 떠 보인다 */
+  --pr-page: #fafaf9;         /* 아주 옅은 오프화이트 (연하게 조정, 2026-08-17) */
   --pr-r: 5px;                /* 각진 편 */
   --pr-shadow: 3px 3px 0 var(--pr-ink);
   --pr-shadow-lg: 5px 6px 0 var(--pr-ink);
