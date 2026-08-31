@@ -9,6 +9,7 @@ draft: false
 publish: true
 modified: 2026-08-17 14:19
 date: 2026-08-17
+published: 2026-08-17
 category: 수수깡
 ---
 

@@ -8,6 +8,7 @@ draft: false
 publish: false
 modified: 2026-07-05 12:15
 date: 2026-07-05
+published: 2026-07-05
 category: 수수깡
 aliases:
   - "사이드 프로젝트/susuggang-02"

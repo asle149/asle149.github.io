@@ -9,6 +9,7 @@ title: AI 에이전트 메모리 관리 (Hierarchy, Types)
 category: AI
 slug: ai-agent-memory
 date: 2026-07-04
+published: 2026-07-04
 draft: false
 description: 컨텍스트 윈도우~콜드 아카이브 계층(promote/demote)과 working·episodic·semantic·procedural 네 종류 — 장소 축과 내용 축으로 나눠 보는 에이전트 기억.
 ---

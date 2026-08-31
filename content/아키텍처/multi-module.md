@@ -1,6 +1,7 @@
 ---
 title: 멀티 모듈
 date: 2026-06-23
+published: 2026-06-23
 tags:
   - Gradle
 draft: false

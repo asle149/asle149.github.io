@@ -1,6 +1,7 @@
 ---
 title: 운영체제2
 date: 2026-06-23
+published: 2026-06-23
 tags:
   - 운영체제
 draft: false

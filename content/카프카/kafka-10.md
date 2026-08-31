@@ -6,6 +6,7 @@ tags:
 category: 카프카
 slug: kafka-10
 date: 2026-07-27
+published: 2026-07-27
 draft: false
 description: ""
 created: 2026-07-27 11:11

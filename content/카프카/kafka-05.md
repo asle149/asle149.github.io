@@ -7,6 +7,7 @@ tags:
 category: ""
 slug: kafka-05
 date: 2026-07-08
+published: 2026-07-08
 draft: false
 description: ""
 ---

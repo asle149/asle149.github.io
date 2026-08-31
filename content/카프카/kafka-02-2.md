@@ -3,6 +3,7 @@ created: 2026-07-02 19:58
 modified: 2026-07-02 20:30
 title: 02-2. 카프카 기본 개념 설명 (토픽, 파티션, 레코드)
 date: 2026-07-02
+published: 2026-07-02
 draft: false
 tags:
   - 토픽

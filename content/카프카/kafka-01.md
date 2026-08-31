@@ -3,6 +3,7 @@ created: 2026-07-01 11:10
 modified: 2026-07-02 20:28
 title: 01. 아파치 카프카의 역사와 미래
 date: 2026-07-01
+published: 2026-07-01
 draft: false
 tags:
   - 이벤트스트리밍

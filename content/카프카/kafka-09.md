@@ -6,6 +6,7 @@ tags:
 category: 카프카
 slug: kafka-09
 date: 2026-07-26
+published: 2026-07-26
 draft: false
 description: ""
 created: 2026-07-26 11:16

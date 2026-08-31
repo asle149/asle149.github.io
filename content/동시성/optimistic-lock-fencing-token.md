@@ -1,6 +1,7 @@
 ---
 title: 낙관적 락과 펜싱 토큰
 date: 2026-06-23
+published: 2026-06-23
 tags:
   - JPA
   - 분산시스템

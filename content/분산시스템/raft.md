@@ -1,6 +1,7 @@
 ---
 title: Raft 합의 알고리즘
 date: 2026-06-23
+published: 2026-06-23
 tags:
   - 합의알고리즘
 draft: false

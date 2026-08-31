@@ -1,6 +1,7 @@
 ---
 title: 데이터베이스1 (조인, 트랜잭션, 인덱스)
 date: 2026-06-29
+published: 2026-06-29
 tags:
   - 데이터베이스
 draft: false

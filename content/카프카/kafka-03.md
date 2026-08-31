@@ -8,6 +8,7 @@ tags:
 category: ""
 slug: kafka-03
 date: 2026-07-03
+published: 2026-07-03
 draft: false
 description: ""
 ---

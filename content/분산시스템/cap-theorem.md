@@ -1,6 +1,7 @@
 ---
 title: CAP 이론
 date: 2026-06-23
+published: 2026-06-23
 tags:
   - NoSQL
 draft: false

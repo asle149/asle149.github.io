@@ -3,6 +3,7 @@ created: 2026-07-02 18:31
 modified: 2026-07-02 20:29
 title: 02-1. 카프카 기본 개념 설명(카프카 브로커와 클러스터)
 date: 2026-07-02
+published: 2026-07-02
 draft: false
 tags:
   - 브로커
