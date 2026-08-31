@@ -604,6 +604,7 @@ body[data-slug="categories"] article p > a:hover + code { border-color: var(--pr
 .center .note-properties-tags a.tag-link {
   background: none; border: none; border-radius: 0; padding: 0; margin-right: 0.55em;
   color: var(--secondary); font-weight: 500; font-size: 0.83rem; background-image: none;
+  text-transform: uppercase;   /* 태그 슬러그가 소문자화됨(DFS→dfs) — 표시만 대문자로 되돌림 */
 }
 .center .note-properties-tags a.tag-link::before { content: "#"; opacity: 0.55; }
 .center .note-properties-tags a.tag-link:hover { background: none; text-decoration: underline; color: var(--secondary); }
