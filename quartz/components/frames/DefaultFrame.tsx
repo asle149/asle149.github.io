@@ -52,10 +52,8 @@ export const DefaultFrame: PageFrame = {
             <div class="profile-avatar" aria-hidden="true">솔</div>
             <div class="profile-meta">
               <div class="profile-name">김민솔</div>
-              <div class="profile-bio">백엔드를 준비하며 공부한 것을 기록합니다.</div>
               <div class="profile-links">
                 <a href="https://github.com/asle149">GitHub</a>
-                <a href="/about">About</a>
               </div>
             </div>
           </div>
